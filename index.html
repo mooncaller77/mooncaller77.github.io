@@ -368,11 +368,23 @@ const body = document.body;
 const hero = document.querySelector(".site-hero");
 const moon = document.querySelector(".moon");
 
-/* ENTER：进入阅读状态 */
+// 模式锁：normal | reading
+// 只有 normal 模式下，滚动才能改变背景状态
+let mode = "normal";
+
+/* ENTER：手动进入阅读状态 */
 function enterWorld() {
-  body.className = "reading";
+  // 锁定模式，禁止滚动再改变背景
+  mode = "reading";
+
+  // 安全地切换类名，不覆盖其他可能存在的类
+  body.classList.add("reading");
+  body.classList.remove("night", "dusk");
+
+  // 隐藏 Hero 区域
   hero.classList.add("hide-hero");
 
+  // 延迟滚动，让 CSS 过渡先开始
   setTimeout(() => {
     document.getElementById("content").scrollIntoView({
       behavior: "smooth"
@@ -380,23 +392,39 @@ function enterWorld() {
   }, 300);
 }
 
-/* 返回顶部：恢复夜晚状态 */
+/* 返回顶部：恢复到夜晚状态 */
 function backToTop() {
+  // 解锁模式，允许滚动重新控制背景
+  mode = "normal";
+
   window.scrollTo({ top: 0, behavior: "smooth" });
-  body.className = "night";
+
+  // 恢复到夜晚状态
+  body.classList.add("night");
+  body.classList.remove("dusk", "reading");
+
+  // 恢复 Hero 区域
   hero.classList.remove("hide-hero");
 }
 
-/* 时间系统（滚动驱动） */
+/* 滚动驱动的时间系统（只在 normal 模式下生效） */
 window.addEventListener("scroll", () => {
+  // 如果已进入阅读模式，则不再根据滚动改变状态
+  if (mode === "reading") {
+    return;
+  }
+
   const y = window.scrollY;
 
   if (y < 100) {
-    body.className = "night";
+    body.classList.add("night");
+    body.classList.remove("dusk", "reading");
   } else if (y < 500) {
-    body.className = "dusk";
+    body.classList.add("dusk");
+    body.classList.remove("night", "reading");
   } else {
-    body.className = "reading";
+    body.classList.add("reading");
+    body.classList.remove("night", "dusk");
   }
 
   /* 月亮上升联动 */
