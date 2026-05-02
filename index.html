@@ -8,24 +8,25 @@
 <style>
 
 /* =========================
-   🌌 基础
+   🌌 基础（保留你的风格）
    ========================= */
 
 html {
-  background: #050d18; /* 防白闪兜底 */
   scroll-behavior: auto;
+  background: #050d18; /* 防白闪 */
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+
+  /* ✔ 保留你的蓝色体系 */
   color: #9fbcd3;
-  background: transparent !important;
 }
 
 /* =========================
-   🌈 背景层（核心修复）
+   🌈 背景层（防闪核心）
    ========================= */
 
 .bg-layer {
@@ -35,7 +36,7 @@ body {
   transition: background 0.8s ease;
 }
 
-/* 夜晚 */
+/* 夜晚（恢复你的原始配色） */
 body.night + .bg-layer {
   background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6);
 }
@@ -45,9 +46,9 @@ body.dusk + .bg-layer {
   background: linear-gradient(to bottom, #0b1220, #1b2a3a, #3a5f7a);
 }
 
-/* 阅读 */
+/* 阅读（只是压暗，不改变体系） */
 body.reading + .bg-layer {
-  background: #050d18;
+  background: linear-gradient(to bottom, #050d18, #081521, #0b1a2a);
 }
 
 /* =========================
@@ -78,13 +79,16 @@ body.reading + .bg-layer {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
+
+  /* ✔ 保留你的原月亮色 */
   background: radial-gradient(circle, rgba(135,206,235,0.3), transparent);
+
   filter: blur(10px);
   opacity: 0.85;
 }
 
 /* =========================
-   📚 章节地图
+   📚 章节地图（不动）
    ========================= */
 
 .chapter-map {
@@ -108,7 +112,7 @@ body.reading + .bg-layer {
 }
 
 /* =========================
-   📖 内容区（排版恢复）
+   📖 内容排版（恢复质感）
    ========================= */
 
 #content {
@@ -145,7 +149,19 @@ body.reading + .bg-layer {
 }
 
 /* =========================
-   🔘 返回按钮
+   ❗关键修复：防“阅读模式内容消失”
+   ========================= */
+
+body.reading #content,
+body.reading .chapter-map,
+body.reading .post-item {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* =========================
+   返回按钮
    ========================= */
 
 .back-top {
@@ -156,20 +172,12 @@ body.reading + .bg-layer {
   cursor: pointer;
 }
 
-/* =========================
-   🌌 状态（只影响文字，不动背景）
-   ========================= */
-
-body.reading #content {
-  opacity: 1;
-}
-
 </style>
 </head>
 
 <body class="night">
 
-<!-- 背景层（关键） -->
+<!-- 背景层 -->
 <div class="bg-layer"></div>
 
 <!-- HERO -->
@@ -190,7 +198,7 @@ body.reading #content {
 </section>
 
 
-<!-- 章节 -->
+<!-- chapter -->
 <section class="chapter-map">
   <div class="chapter-grid">
     <a class="chapter-item" href="/categories/短篇/">短篇</a>
@@ -201,20 +209,18 @@ body.reading #content {
 </section>
 
 
-<!-- 内容 -->
+<!-- content -->
 <main id="content">
 
 
 
-  <article class="post-item">
+<article class="post-item">
+  <h2 class="post-title">
+    <a href="/"></a>
+  </h2>
 
-    <h2 class="post-title">
-      <a href="/"></a>
-    </h2>
-
-    
-
-  </article>
+  
+</article>
 
 
 
@@ -224,7 +230,9 @@ body.reading #content {
 <div class="back-top" onclick="backToTop()">↑</div>
 
 
-<!-- JS -->
+<!-- =========================
+   JS（稳定无闪版本）
+   ========================= -->
 <script>
 
 let mode = "home";
@@ -264,13 +272,10 @@ window.addEventListener("scroll", () => {
 
   if (y < 120) {
     document.body.classList.add("night");
-    document.body.classList.remove("dusk", "reading");
   } else if (y < 500) {
     document.body.classList.add("dusk");
-    document.body.classList.remove("night", "reading");
   } else {
     document.body.classList.add("reading");
-    document.body.classList.remove("night", "dusk");
   }
 });
 
