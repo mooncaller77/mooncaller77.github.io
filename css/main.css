@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ff8f63;
+  background: #94ff38;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2711,4 +2711,118 @@ hr {
 .post-button,
 .post-more-link {
   display: none !important;
+}
+/* ===== 同人站结构：分类入口卡片化 & 情绪引导 ===== */
+/* 1. 首页顶部：给月光光晕加一句引导语（在月光下方） */
+.post-block:first-of-type::before {
+  content: "微弱信号，不定期广播。";
+  display: block;
+  text-align: center;
+  margin: 40px auto 20px auto;
+  font-size: 16px;
+  color: rgba(135,206,235,0.7);
+  letter-spacing: 4px;
+  font-style: italic;
+  opacity: 0.9;
+  height: auto;
+  width: auto;
+  background: transparent;
+  border-radius: 0;
+  filter: none;
+}
+/* 2. 弱化“文章列表”的标题，改成“最近回响” */
+.home .posts-expand .post-title,
+.home .post-block .post-title {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+/* 3. 分类导航卡片式入口（首页用） */
+.home .menu,
+.home .site-nav {
+  display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 30px auto 40px auto;
+  max-width: 800px;
+  background: transparent !important;
+}
+.home .menu-item {
+  flex: 1 1 180px;
+  text-align: center;
+  background: rgba(10,25,45,0.25);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(135,206,235,0.12);
+  border-radius: 12px;
+  padding: 16px 8px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+.home .menu-item:hover {
+  border-color: #87ceeb;
+  background: rgba(10,25,45,0.45);
+  box-shadow: 0 0 20px rgba(135,206,235,0.2);
+}
+.home .menu-item a {
+  display: block;
+  font-size: 17px;
+  color: #87ceeb !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.home .menu-item a::after {
+  display: block;
+  content: "";
+  font-size: 12px;
+  color: rgba(135,206,235,0.5);
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin-top: 6px;
+}
+/* 给每个菜单项加自定义描述 */
+.home .menu-item:nth-child(2) a::after {
+  content: "一些在凌晨发生的故事";
+}
+.home .menu-item:nth-child(3) a::after {
+  content: "仍在持续生长的某些关系";
+}
+.home .menu-item:nth-child(4) a::after {
+  content: "视觉化的记忆碎片";
+}
+/* 去掉“首页”和“归档”的卡片样式，保留文字 */
+.home .menu-item:first-child,
+.home .menu-item:last-child {
+  background: transparent !important;
+  border: none !important;
+  flex: 0 0 auto;
+  min-width: auto;
+  padding: 8px 4px;
+  backdrop-filter: none;
+}
+/* 4. 给“最近回响”加一个小标题 */
+.home .post-block:first-of-type {
+  border-top: 1px solid rgba(135,206,235,0.12) !important;
+  padding-top: 30px !important;
+}
+.home .post-block:first-of-type .post-title {
+  position: relative;
+}
+/* 5. 弱化时间感：把文章日期变得更低调 */
+.home .post-meta {
+  font-size: 12px !important;
+  color: rgba(135,206,235,0.35) !important;
+}
+/* 6. 页脚收尾：信号感 */
+.footer-inner::after {
+  content: "信号持续发送中。";
+  display: block;
+  text-align: center;
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(135,206,235,0.4);
+  letter-spacing: 2px;
+  font-style: italic;
 }
