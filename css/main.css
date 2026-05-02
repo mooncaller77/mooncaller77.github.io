@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #57b13b;
+  background: #a491b1;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2700,21 +2700,21 @@ hr {
 .post-more-link {
   display: none !important;
 }
-/* ===== 同人站结构：首页改为“世界入口” ===== */
-/* 1. 首页顶部：月光光晕放大、居中、占据第一屏核心位置 */
+/* ===== 同人站结构：首页改为"世界入口" ===== */
+/* 1. 首页顶部：月光光晕 + 引导语 + 向下提示（占据第一屏核心） */
 .post-block:first-of-type {
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 70vh; /* 让第一屏占据大部分视野 */
+  text-align: center;
   padding-top: 0 !important;
   border-top: none !important;
   border-bottom: none !important;
-  text-align: center;
 }
 .post-block:first-of-type::before {
-/* 月光光晕放大，更有存在感 */
+/* 月光光晕 */
   content: "";
   display: block;
   width: 160px;
@@ -2727,33 +2727,49 @@ hr {
   animation: moonGlow 4s ease-in-out infinite alternate;
 }
 .post-block:first-of-type::after {
-/* 引导语文字，字号更大，像封面标语 */
+/* 引导语 */
   content: "微弱信号，不定期广播。";
   display: block;
   font-size: 18px;
   color: rgba(135,206,235,0.8);
   letter-spacing: 5px;
   font-style: italic;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 30px auto;
   opacity: 0.9;
 }
-/* 2. “Enter / 进入” 动作：一个向下阅读的暗示 */
-.home .post-block:first-of-type .post-title {
-  font-size: 20px !important;
+/* 向下阅读提示 */
+.post-block:first-of-type .post-title a {
+  font-size: 16px !important;
   font-weight: 400 !important;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.home .post-block:first-of-type .post-title a {
-  color: rgba(135,206,235,0.6) !important;
+  color: rgba(135,206,235,0.5) !important;
   letter-spacing: 3px;
   border-bottom: none !important;
-  transition: color 0.4s ease;
 }
-.home .post-block:first-of-type .post-title a:hover {
-  color: #87ceeb !important;
+.post-block:first-of-type .post-title a::after {
+  content: " ↓";
+  font-size: 14px;
+  opacity: 0.6;
 }
-/* 3. 导航卡片移到文章列表下方，作为“分类入口” */
+/* 首页隐藏文章正文和日期 */
+.home .post-body,
+.home .post-meta {
+  display: none !important;
+}
+/* 2. 导航绝对定位到页面下方，作为第二屏入口 */
+.home .header {
+  position: fixed !important;
+  bottom: 40px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  max-width: 800px !important;
+  z-index: 100 !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+.home .header-inner {
+  background: transparent !important;
+}
 .home .menu,
 .home .site-nav {
   display: flex;
@@ -2762,43 +2778,38 @@ hr {
   justify-content: center;
   justify-content: center;
   gap: 16px;
-  margin: 40px auto 30px auto;
-  max-width: 800px;
   background: transparent !important;
-  order: 10; /* 用 order 推到文章列表下方 */
 }
 .home .menu-item {
-  flex: 1 1 180px;
   text-align: center;
-  background: rgba(10,25,45,0.25);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(135,206,235,0.12);
+  background: rgba(10,25,45,0.35);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(135,206,235,0.15);
   border-radius: 12px;
-  padding: 16px 8px;
+  padding: 14px 10px;
   transition: all 0.3s ease;
-  min-width: 120px;
+  min-width: 100px;
 }
 .home .menu-item:hover {
   border-color: #87ceeb;
-  background: rgba(10,25,45,0.45);
+  background: rgba(10,25,45,0.55);
   box-shadow: 0 0 20px rgba(135,206,235,0.2);
 }
 .home .menu-item a {
-  display: block;
-  font-size: 17px;
+  font-size: 16px;
   color: #87ceeb !important;
-  text-decoration: none !important;
   font-weight: 600;
   letter-spacing: 2px;
+  text-decoration: none !important;
 }
 .home .menu-item a::after {
   display: block;
   content: "";
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(135,206,235,0.5);
   letter-spacing: 1px;
   font-weight: 400;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 /* 给每个菜单项加自定义描述 */
 .home .menu-item:nth-child(2) a::after {
@@ -2810,17 +2821,14 @@ hr {
 .home .menu-item:nth-child(4) a::after {
   content: "视觉化的记忆碎片";
 }
-/* 去掉“首页”和“归档”的卡片样式 */
+/* "首页"和"归档"不要卡片背景 */
 .home .menu-item:first-child,
 .home .menu-item:last-child {
   background: transparent !important;
   border: none !important;
-  flex: 0 0 auto;
-  min-width: auto;
-  padding: 8px 4px;
   backdrop-filter: none;
 }
-/* 4. 文章列表：标题更松散，时间感极弱 */
+/* 3. 文章列表：标题更松散 */
 .home .post-block {
   border-bottom: 1px solid rgba(135,206,235,0.06) !important;
   padding: 18px 0 !important;
@@ -2831,11 +2839,7 @@ hr {
   font-weight: 400 !important;
   letter-spacing: 1px;
 }
-.home .post-meta {
-  font-size: 11px !important;
-  color: rgba(135,206,235,0.25) !important;
-}
-/* 5. 页脚 */
+/* 4. 页脚 */
 .footer-inner::after {
   content: "信号持续发送中。";
   display: block;
@@ -2845,6 +2849,14 @@ hr {
   color: rgba(135,206,235,0.4);
   letter-spacing: 2px;
   font-style: italic;
+}
+/* 5. 修复：首页标题栏的背景要完全透明 */
+.home .header,
+.home .header-inner,
+.home .site-brand-container,
+.home .site-meta,
+.home .site-nav {
+  background: transparent !important;
 }
 @keyframes moonGlow {
   from {
