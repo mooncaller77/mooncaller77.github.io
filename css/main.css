@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #d48ac9;
+  background: #73502a;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2531,8 +2531,8 @@ body {
   border-radius: 14px !important;
   border: 1px solid rgba(135,206,235,0.12) !important;
   box-shadow: none !important;
-  padding: 30px !important;
-  margin-bottom: 30px !important;
+  padding: 22px !important;
+  margin-bottom: 22px !important;
   transition: all 0.3s ease !important;
 }
 .post-block:hover,
@@ -2625,7 +2625,7 @@ nav.header-inner,
   margin: 20px auto;
   background: linear-gradient(to right, #2775b6, #87ceeb, #2775b6);
   border-radius: 10px;
-  opacity: 0.6;
+  opacity: 0.3;
 }
 body::after {
   content: "";
@@ -2661,4 +2661,12 @@ body::after {
   color: #87ceeb;
   letter-spacing: 3px;
   opacity: 0.85;
+}
+.post-body,
+.post-content,
+.entry-content {
+  background: transparent !important;
+}
+.post-block .post-body {
+  background: transparent !important;
 }
