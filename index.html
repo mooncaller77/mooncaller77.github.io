@@ -8,7 +8,7 @@
 <style>
 
 /* =========================
-   基础稳定层
+   🌙 基础系统
    ========================= */
 
 html {
@@ -19,11 +19,11 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "PingFang SC", "Noto Sans SC", sans-serif;
-  transition: background 0.6s ease, color 0.6s ease;
+  transition: background 0.7s ease, color 0.7s ease;
 }
 
 /* =========================
-   三状态（唯一控制源）
+   🌌 三状态
    ========================= */
 
 body.night {
@@ -33,14 +33,16 @@ body.night {
 
 body.dusk {
   background: linear-gradient(to bottom, #0b1220, #1b2a3a, #3a5f7a);
+  color: #b8c9d8;
 }
 
 body.reading {
   background: #050d18;
+  color: #dbe9f5;
 }
 
 /* =========================
-   HERO
+   🌙 HERO
    ========================= */
 
 .site-hero {
@@ -49,6 +51,7 @@ body.reading {
   align-items: center;
   justify-content: center;
   position: relative;
+  text-align: center;
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -68,26 +71,11 @@ body.reading {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(135,206,235,0.3), transparent);
   filter: blur(10px);
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* =========================
-   内容区
-   ========================= */
-
-#content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 100px 20px;
-}
-
-.post-item {
-  padding: 22px 0;
-  border-bottom: 1px solid rgba(135,206,235,0.08);
-}
-
-/* =========================
-   章节地图
+   📚 章节地图
    ========================= */
 
 .chapter-map {
@@ -95,14 +83,94 @@ body.reading {
   text-align: center;
 }
 
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.chapter-item {
+  padding: 18px;
+  border: 1px solid rgba(135,206,235,0.12);
+  text-decoration: none;
+  color: #87CEEB;
+  transition: 0.3s;
+}
+
+.chapter-item:hover {
+  border-color: #87CEEB;
+  transform: translateY(-2px);
+}
+
 /* =========================
-   bug修复关键：避免“消失”
+   📖 内容区（重点修复）
    ========================= */
 
-body.reading #content,
-body.reading .chapter-map {
-  opacity: 1 !important;
-  visibility: visible !important;
+#content {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 90px 22px;
+}
+
+/* 文章列表节奏 */
+.post-item {
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(135,206,235,0.08);
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   ✨ 重点：排版恢复（你丢掉的“好看感”）
+   ========================= */
+
+/* 标题层级 */
+.post-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+}
+
+.post-title a {
+  color: #87CEEB;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.post-title a:hover {
+  color: #ffffff;
+}
+
+/* 摘要 */
+.post-excerpt {
+  font-size: 13px;
+  line-height: 1.75;
+  opacity: 0.62;
+  letter-spacing: 0.2px;
+}
+
+/* =========================
+   🔘 返回按钮
+   ========================= */
+
+.back-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-top:hover {
+  opacity: 1;
+  color: #87CEEB;
 }
 
 </style>
@@ -110,41 +178,75 @@ body.reading .chapter-map {
 
 <body class="night">
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+     ========================= -->
 <section class="site-hero">
+
   <div class="moon"></div>
 
   <div>
+
     <h1 onclick="backToTop()">FM214831</h1>
 
-    <p>海边月亮 / 同人信号</p>
+    <p>海边月亮 / 同人信号系统</p>
 
-    <div onclick="enterWorld()" style="cursor:pointer; margin-top:30px;">
+    <div onclick="enterWorld()" style="margin-top:30px; cursor:pointer;">
       ENTER
     </div>
+
   </div>
+
 </section>
 
-<!-- CHAPTER -->
+
+<!-- =========================
+     章节地图
+     ========================= -->
 <section class="chapter-map">
-  <a href="/categories/短篇/">短篇</a>
-  <a href="/categories/长篇/">长篇</a>
-  <a href="/categories/片段/">片段</a>
-  <a href="/categories/同人图/">图像</a>
+
+  <div class="chapter-grid">
+    <a class="chapter-item" href="/categories/短篇/">短篇</a>
+    <a class="chapter-item" href="/categories/长篇/">长篇</a>
+    <a class="chapter-item" href="/categories/片段/">片段</a>
+    <a class="chapter-item" href="/categories/同人图/">图像</a>
+  </div>
+
 </section>
 
-<!-- CONTENT -->
+
+<!-- =========================
+     内容
+     ========================= -->
 <main id="content">
 
 
+
   <article class="post-item">
-    <h2><a href="/"></a></h2>
+
+    <h2 class="post-title">
+      <a href="/"></a>
+    </h2>
+
+    
+
   </article>
+
 
 
 </main>
 
-<!-- JS -->
+
+<footer style="text-align:center; padding:60px; opacity:0.4;">
+  信号持续发送中
+</footer>
+
+<div class="back-top" onclick="backToTop()">↑</div>
+
+
+<!-- =========================
+     JS（稳定状态机）
+     ========================= -->
 <script>
 
 let mode = "home";
@@ -153,26 +255,24 @@ function enterWorld() {
   mode = "reading";
 
   document.body.className = "reading";
-
   document.querySelector(".site-hero").classList.add("hide");
 
-  // ❗关键：避免scrollIntoView触发闪
   setTimeout(() => {
-    document.getElementById("content").scrollIntoView();
-  }, 200);
+    document.getElementById("content").scrollIntoView({
+      behavior: "smooth"
+    });
+  }, 180);
 }
 
 function backToTop() {
   mode = "home";
 
-  window.scrollTo({ top: 0 });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 
   document.body.className = "night";
-
   document.querySelector(".site-hero").classList.remove("hide");
 }
 
-/* scroll只在home生效 */
 window.addEventListener("scroll", () => {
   if (mode !== "home") return;
 
