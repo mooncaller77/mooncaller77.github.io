@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #fff;
+  background: #a25d88;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2653,7 +2653,7 @@ body::after {
 }
 /* 14. 页脚标语 */
 .footer-inner::before {
-  content: "年年康乐，岁岁满全。";
+  content: "年年康乐，岁岁满全";
   display: block;
   text-align: center;
   margin-bottom: 12px;
