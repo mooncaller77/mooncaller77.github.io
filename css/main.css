@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #9133e5;
+  background: #9e0d58;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2639,17 +2639,16 @@ body::after {
   background: linear-gradient(to top, rgba(135,206,235,0.15), transparent);
   pointer-events: none;
 }
-/* 13. 首页弯月（带柔光） */
+/* 13. 首页月光（柔光光晕，暗示月亮） */
 .post-block:first-of-type::before {
   content: "";
   display: block;
-  width: 60px;
-  height: 60px;
-  margin: 60px auto 20px auto;
+  width: 100px;
+  height: 100px;
+  margin: 60px auto 30px auto;
+  background: radial-gradient(circle at 50% 50%, rgba(135,206,235,0.25) 0%, rgba(135,206,235,0.08) 40%, rgba(135,206,235,0.02) 65%, transparent 100%);
   border-radius: 50%;
-  background: transparent;
-  box-shadow: 15px -8px 0 2px rgba(135,206,235,0.35), 15px -8px 0 8px rgba(135,206,235,0.12);
-/* 外层大光晕 */
+  filter: blur(6px);
   opacity: 0.9;
 }
 /* 14. 首页标语（优化字体） */
