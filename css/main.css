@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #a4ff49;
+  background: #e9ff30;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2509,11 +2509,20 @@ header.header {
     left: 320px;
   }
 }
+body {
+  background-color: #f7f4ef !important;
+  color: #3a3a3a !important;
+}
+.main-inner {
+  background-color: #f7f4ef !important;
+}
 .header,
 .header-inner,
-nav.header-inner {
+nav.header-inner,
+.site-brand-container,
+.site-meta {
   background-color: #2775b6 !important;
-  border-bottom: none !important;
+  background: #2775b6 !important;
 }
 .site-title a {
   color: #fff !important;
@@ -2533,8 +2542,6 @@ nav.header-inner {
   color: #87ceeb !important;
   font-weight: 500 !important;
 }
-.menu:hover,
-.menu-item:hover,
 .menu-item a:hover {
   color: #fff !important;
   background-color: rgba(255,255,255,0.12) !important;
@@ -2542,4 +2549,52 @@ nav.header-inner {
 .menu-item-active a {
   color: #fff !important;
   border-bottom: 2px solid #87ceeb !important;
+}
+.post-block {
+  background-color: #fff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 12px rgba(39,117,182,0.08) !important;
+  padding: 30px !important;
+  margin-bottom: 30px !important;
+}
+.post-title a {
+  color: #2775b6 !important;
+  font-weight: 600 !important;
+}
+.post-title a:hover {
+  color: #87ceeb !important;
+}
+.post-body p {
+  text-indent: 2em !important;
+  line-height: 1.8 !important;
+  margin-bottom: 0.8em !important;
+}
+a {
+  color: #87ceeb !important;
+}
+a:hover {
+  color: #2775b6 !important;
+}
+.sidebar {
+  background-color: #f7f4ef !important;
+}
+.footer {
+  background-color: #2775b6 !important;
+  color: rgba(255,255,255,0.8) !important;
+}
+.footer a {
+  color: #87ceeb !important;
+}
+pre,
+code,
+.highlight {
+  background-color: #f0ebe3 !important;
+  border-left: 3px solid #87ceeb !important;
+}
+blockquote {
+  border-left: 4px solid #2775b6 !important;
+  background-color: rgba(135,206,235,0.05) !important;
+}
+hr {
+  border-color: rgba(39,117,182,0.12) !important;
 }
