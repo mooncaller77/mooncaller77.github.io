@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #9e0d58;
+  background: #5938ff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2639,7 +2639,7 @@ body::after {
   background: linear-gradient(to top, rgba(135,206,235,0.15), transparent);
   pointer-events: none;
 }
-/* 13. 首页月光（柔光光晕，暗示月亮） */
+/* 13. 首页月光（柔光光晕） */
 .post-block:first-of-type::before {
   content: "";
   display: block;
@@ -2651,28 +2651,14 @@ body::after {
   filter: blur(6px);
   opacity: 0.9;
 }
-/* 14. 首页标语（优化字体） */
-.post-block:first-of-type::after {
-  content: "年年康乐，岁岁满全";
-  display: block;
-  text-align: center;
-  margin: 0 auto 30px auto;
-  font-size: 27px;
-  color: #87ceeb;
-  letter-spacing: 3px;
-  opacity: 0.85;
-/* 更优雅的字体组合 */
-  font-family: "STKaiti", "KaiTi", "Noto Serif SC", "Source Han Serif SC", "华文楷体", serif;
-  font-style: italic;
-}
-/* 15. 页脚标语（替代 Hexo & NexT 驱动信息） */
+/* 14. 页脚标语 */
 .footer-inner::before {
-  content: "他们在海边看月亮。";
+  content: "年年康乐，岁岁满全。";
   display: block;
   text-align: center;
   margin-bottom: 12px;
   font-family: "Georgia", "Noto Serif SC", serif;
-  font-size: 15px;
+  font-size: 16px;
   color: #87ceeb;
   opacity: 0.7;
   letter-spacing: 3px;
