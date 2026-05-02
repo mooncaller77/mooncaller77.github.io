@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #36d217;
+  background: #99f709;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2663,4 +2663,46 @@ body::after {
   opacity: 0.7;
   letter-spacing: 3px;
   font-style: italic;
+}
+/* 隐藏页脚 Hexo & NexT 驱动信息 */
+.footer .powered-by,
+.footer .theme-info {
+  display: none !important;
+}
+/* ===== 结构减法：减少 UI 感 ===== */
+/* 1. 文章卡片去盒子感：去掉背景、边框、阴影、圆角 */
+.post-block {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 20px 0 !important;
+  margin-bottom: 16px !important;
+}
+/* 卡片悬浮效果也去掉，不再"浮起来" */
+.post-block:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+/* 2. 文章之间用极淡的线分隔，而不是卡片 */
+.post-block {
+  border-bottom: 1px solid rgba(135,206,235,0.08) !important;
+}
+/* 最后一篇文章不要底线 */
+.post-block:last-of-type {
+  border-bottom: none !important;
+}
+/* 3. 文章标题去掉下划线装饰，更干净 */
+.post-title a {
+  border-bottom: none !important;
+}
+/* 4. 减少分割线 */
+hr {
+  border-color: rgba(135,206,235,0.06) !important;
+  margin: 24px 0 !important;
+}
+/* 5. 页脚分隔线也减弱 */
+.footer {
+  border-top: 1px solid rgba(135,206,235,0.08) !important;
 }
