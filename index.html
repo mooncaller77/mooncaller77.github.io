@@ -6,22 +6,34 @@
   <link rel="stylesheet" href="/css/main.css">
   <style>
     /* ==================================================
-       🌙 世界入口系统 (独立 Hero) + 滚动月亮
+       🌙 三状态世界系统 + 章节地图
        ================================================== */
 
-    /* ----- 全局背景 (深海渐变，与之前一致) ----- */
+    /* ----- 全局背景过渡 ----- */
     html, body {
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background: linear-gradient(
-        to bottom,
-        #050d18 0%,
-        #0b1a2a 50%,
-        #2775b6 100%
-      ) fixed !important;
-      color: #9fbcd3;
       font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+      transition: background 1s ease;
+    }
+
+    /* 夜晚（默认） */
+    body.night {
+      background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6);
+      color: #9fbcd3;
+    }
+
+    /* 黄昏 */
+    body.dusk {
+      background: linear-gradient(to bottom, #0b1220, #1b2a3a, #3a5f7a);
+      color: #b8c9d8;
+    }
+
+    /* 阅读 */
+    body.reading {
+      background: #050d18;
+      color: #dbe9f5;
     }
 
     /* ----- HERO 区域 ----- */
@@ -36,31 +48,29 @@
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    /* 月亮 (独立元素，用于滚动控制) */
     .moon {
       position: absolute;
-      width: 170px;
-      height: 170px;
+      width: 160px;
+      height: 160px;
       top: 35%;
       left: 50%;
       transform: translateX(-50%);
       border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba(135, 206, 235, 0.3),
-        rgba(135, 206, 235, 0.1),
-        transparent 70%
-      );
+      background: radial-gradient(circle, rgba(135,206,235,0.3), transparent);
       filter: blur(10px);
       opacity: 0.8;
-      transition: all 0.6s ease;
-      pointer-events: none;
+      transition: all 0.8s ease;
     }
 
-    /* 月亮滚动后的状态：上升 + 淡出 + 缩小 */
-    .moon.move-up {
-      transform: translate(-50%, -120px) scale(0.85);
+    /* 时间系统：月亮联调 */
+    body.dusk .moon {
+      opacity: 0.4;
+      transform: translate(-50%, -40px) scale(0.9);
+    }
+
+    body.reading .moon {
       opacity: 0;
+      transform: translate(-50%, -80px) scale(0.7);
     }
 
     /* Hero 文字区域 */
@@ -90,7 +100,6 @@
       letter-spacing: 2px;
     }
 
-    /* ENTER 按钮 */
     .hero-enter {
       margin-top: 40px;
       font-size: 12px;
@@ -105,7 +114,7 @@
       color: #ffffff;
     }
 
-    /* Hero 退出状态 (点击ENTER后) */
+    /* Hero 退出状态 */
     .site-hero.hide-hero {
       opacity: 0;
       transform: translateY(-20px);
@@ -116,7 +125,52 @@
       opacity: 0;
     }
 
-    /* ----- 内容区 (文章列表) ----- */
+    /* ----- 章节地图（分类入口） ----- */
+    .chapter-map {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .chapter-title {
+      font-size: 11px;
+      letter-spacing: 6px;
+      opacity: 0.3;
+      margin-bottom: 40px;
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .chapter-item {
+      padding: 20px;
+      border: 1px solid rgba(135, 206, 235, 0.1);
+      text-decoration: none;
+      color: #87CEEB;
+      transition: 0.3s;
+    }
+
+    .chapter-item:hover {
+      border-color: #87CEEB;
+      transform: translateY(-3px);
+    }
+
+    .chapter-item h3 {
+      margin: 0 0 6px 0;
+      font-size: 18px;
+    }
+
+    .chapter-item p {
+      margin: 0;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    /* ----- 内容区（文章列表） ----- */
     #content {
       max-width: 800px;
       margin: 0 auto;
@@ -173,7 +227,7 @@
       color: #87CEEB;
     }
 
-    /* ----- 沉浸阅读模式 (文章页用) ----- */
+    /* ----- 沉浸阅读模式（文章详情页用） ----- */
     .post-focus {
       background: #050d18 !important;
       color: #dbe9f5 !important;
@@ -202,14 +256,13 @@
   </style>
 </head>
 
-<body class="home">
+<body class="night">
 
 <!-- =========================
-     HERO (世界入口)
+     HERO（世界入口）
      ========================= -->
 <section class="site-hero">
 
-  <!-- 月亮元素 -->
   <div class="moon"></div>
 
   <div class="hero-inner">
@@ -217,11 +270,11 @@
     <h1 class="hero-title" onclick="backToTop()">FM214831</h1>
 
     <p class="hero-subtitle">
-      海边月亮、全糖可乐、以及一些真挚的关系。
+      全糖可乐、海边月亮、以及一些真挚的关系。
     </p>
 
     <p class="hero-note">
-      微弱信号，不定期广播。
+      年年康乐，岁岁满全。
     </p>
 
     <div class="hero-enter" onclick="enterWorld()">
@@ -234,7 +287,41 @@
 
 
 <!-- =========================
-     内容区 (记录流)
+     章节地图（分类入口）
+     ========================= -->
+<section class="chapter-map">
+
+  <div class="chapter-title">CHAPTER MAP</div>
+
+  <div class="chapter-grid">
+
+    <a href="/categories/短篇/" class="chapter-item">
+      <h3>短篇</h3>
+      <p>偶发事件与夜晚记录</p>
+    </a>
+
+    <a href="/categories/长篇/" class="chapter-item">
+      <h3>长篇</h3>
+      <p>持续发生的关系线</p>
+    </a>
+
+    <a href="/categories/片段/" class="chapter-item">
+      <h3>片段</h3>
+      <p>未完成的信号</p>
+    </a>
+
+    <a href="/categories/同人图/" class="chapter-item">
+      <h3>图像</h3>
+      <p>视觉记忆碎片</p>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     内容区（文章列表）
      ========================= -->
 <main id="content">
 
@@ -268,19 +355,22 @@
   <p>信号持续发送中。</p>
 </footer>
 
+
 <!-- 返回顶部按钮 -->
 <div class="back-top" onclick="backToTop()">↑</div>
 
 
 <!-- =========================
-     JS：入口动作 + 月亮滚动 + 状态复位
+     JS：时间系统 + 入口动作 + 状态复位
      ========================= -->
 <script>
-const moon = document.querySelector(".moon");
+const body = document.body;
 const hero = document.querySelector(".site-hero");
+const moon = document.querySelector(".moon");
 
+/* ENTER：进入阅读状态 */
 function enterWorld() {
-  // 1. 隐藏Hero，并平滑滚动到内容区
+  body.className = "reading";
   hero.classList.add("hide-hero");
 
   setTimeout(() => {
@@ -290,31 +380,32 @@ function enterWorld() {
   }, 300);
 }
 
+/* 返回顶部：恢复夜晚状态 */
 function backToTop() {
-  // 2. 平滑滚动回顶部，并恢复Hero状态
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  body.className = "night";
   hero.classList.remove("hide-hero");
 }
 
-/* 滚动控制月亮：页面滚动超过80px时，月亮上升并淡出 */
+/* 时间系统（滚动驱动） */
 window.addEventListener("scroll", () => {
   const y = window.scrollY;
 
+  if (y < 100) {
+    body.className = "night";
+  } else if (y < 500) {
+    body.className = "dusk";
+  } else {
+    body.className = "reading";
+  }
+
+  /* 月亮上升联动 */
   if (moon) {
-    if (y > 80) {
+    if (y > 120) {
       moon.classList.add("move-up");
     } else {
       moon.classList.remove("move-up");
     }
-  }
-
-  /* 如果用户手动滚动回顶部，则恢复Hero状态 */
-  if (y < 50) {
-    hero.classList.remove("hide-hero");
   }
 });
 </script>
