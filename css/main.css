@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #067338;
+  background: #ff8f63;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2705,4 +2705,10 @@ hr {
 /* 5. 页脚分隔线也减弱 */
 .footer {
   border-top: 1px solid rgba(135,206,235,0.08) !important;
+}
+/* 首页只显示标题，隐藏正文和"阅读全文"按钮 */
+.post-body,
+.post-button,
+.post-more-link {
+  display: none !important;
 }
