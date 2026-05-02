@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #73502a;
+  background: #1d6134;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2509,6 +2509,10 @@ header.header {
     left: 320px;
   }
 }
+/* ==================================================
+   FM214831 · 海边月亮 · 景泰蓝 × 天青蓝（稳定版）
+   ================================================== */
+/* 1. 全局背景 */
 html {
   min-height: 100vh;
   background: linear-gradient(to bottom, #050d18 0%, #0b1a2a 50%, #2775b6 100%) fixed !important;
@@ -2518,104 +2522,102 @@ body {
   color: #9fbcd3 !important;
   font-family: "PingFang SC", "Noto Sans SC", sans-serif;
 }
-.main-inner {
+/* 2. 主容器去底色 */
+.main-inner,
+.content-wrap {
   background: transparent !important;
 }
-.post-block,
+/* 3. 内容卡片（统一氛围层） */
 .post,
-.article,
-.card,
-.content {
-  background: rgba(10,25,45,0.4) !important;
-  backdrop-filter: blur(8px) !important;
-  border-radius: 14px !important;
-  border: 1px solid rgba(135,206,235,0.12) !important;
+.post-block,
+.article {
+  background: rgba(10,25,45,0.38) !important;
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  border: 1px solid rgba(135,206,235,0.12);
   box-shadow: none !important;
-  padding: 22px !important;
-  margin-bottom: 22px !important;
-  transition: all 0.3s ease !important;
+  padding: 22px;
+  margin-bottom: 22px;
+  transition: all 0.3s ease;
 }
-.post-block:hover,
-.post:hover {
-  border-color: #87ceeb !important;
-  box-shadow: 0 0 25px rgba(135,206,235,0.25) !important;
-  transform: translateY(-2px) !important;
+/* hover 提亮 */
+.post:hover,
+.post-block:hover {
+  border-color: #87ceeb;
+  box-shadow: 0 0 25px rgba(135,206,235,0.25);
+  transform: translateY(-2px);
 }
+/* 4. 彻底清理正文内层黑底（关键） */
+.post-body,
+.post-content,
+.entry-content {
+  background: transparent !important;
+}
+/* 5. 标题 */
 .post-title a {
   color: #87ceeb !important;
-  font-weight: 600 !important;
+  font-weight: 600;
 }
 .post-title a:hover {
   color: #fff !important;
 }
+/* 6. 正文 */
 .post-body p {
-  text-indent: 2em !important;
-  line-height: 1.8 !important;
-  margin-bottom: 0.8em !important;
+  text-indent: 2em;
+  line-height: 1.8;
+  margin-bottom: 0.8em;
 }
+/* 7. 链接 */
 a {
   color: #87ceeb !important;
 }
 a:hover {
   color: #2775b6 !important;
 }
-hr {
-  border-color: #2775b6 !important;
+/* 8. 引用与代码 */
+blockquote {
+  border-left: 4px solid #2775b6;
+  background: rgba(135,206,235,0.05);
+  color: #b0c8d8;
 }
 pre,
 code,
 .highlight {
-  background-color: rgba(255,255,255,0.05) !important;
-  border-left: 3px solid #87ceeb !important;
-  color: #9fbcd3 !important;
+  background: rgba(255,255,255,0.05);
+  border-left: 3px solid #87ceeb;
+  color: #9fbcd3;
 }
-blockquote {
-  border-left: 4px solid #2775b6 !important;
-  background-color: rgba(135,206,235,0.05) !important;
-  color: #b0c8d8 !important;
-}
-.header,
-.header-inner,
-nav.header-inner,
-.site-brand-container,
+/* 9. 顶部区域（彻底去掉黑块核心） */
 .site-meta,
-.site-nav {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-.site-title a {
-  color: #fff !important;
-  font-weight: 600 !important;
-}
+.site-brand-container,
+.brand,
+.site-title,
 .site-subtitle {
-  color: rgba(135,206,235,0.8) !important;
-  font-style: italic !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
+.site-meta::before,
+.site-meta::after,
+.brand::before,
+.brand::after {
+  content: none !important;
+  background: none !important;
+}
+/* 10. 导航 */
+.site-nav,
 .menu,
-.menu-item,
 .menu-item a {
-  background-color: transparent !important;
-  color: #87ceeb !important;
-  font-weight: 500 !important;
+  background: transparent !important;
+  color: #87ceeb;
 }
 .menu-item a:hover {
-  color: #fff !important;
+  color: #fff;
 }
-.menu-item-active a {
-  color: #fff !important;
-  border-bottom: 2px solid #87ceeb !important;
-}
-.sidebar {
-  background-color: transparent !important;
-}
+/* 11. 页脚 */
 .footer {
-  background-color: transparent !important;
   background: transparent !important;
-  color: rgba(255,255,255,0.6) !important;
-  border-top: 1px solid rgba(135,206,235,0.15) !important;
-}
-.footer a {
-  color: #87ceeb !important;
+  border-top: 1px solid rgba(135,206,235,0.15);
+  color: rgba(255,255,255,0.6);
 }
 .footer::after {
   content: "";
@@ -2627,17 +2629,17 @@ nav.header-inner,
   border-radius: 10px;
   opacity: 0.3;
 }
+/* 12. 海面光晕 */
 body::after {
   content: "";
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
   height: 200px;
-  background: linear-gradient(to top, rgba(135,206,235,0.15), transparent) !important;
+  background: linear-gradient(to top, rgba(135,206,235,0.15), transparent);
   pointer-events: none;
-  z-index: 0;
 }
+/* 13. 首页月亮 */
 .posts-collapse {
   position: relative;
 }
@@ -2646,7 +2648,7 @@ body::after {
   display: block;
   width: 120px;
   height: 120px;
-  margin: 60px auto 20px auto;
+  margin: 60px auto 20px;
   background: radial-gradient(circle, #87ceeb 0%, rgba(135,206,235,0.2) 60%, transparent 70%);
   border-radius: 50%;
   filter: blur(2px);
@@ -2656,17 +2658,8 @@ body::after {
   content: "他们在海边看月亮。";
   display: block;
   text-align: center;
-  margin: 0 auto 60px auto;
   font-size: 22px;
   color: #87ceeb;
   letter-spacing: 3px;
   opacity: 0.85;
-}
-.post-body,
-.post-content,
-.entry-content {
-  background: transparent !important;
-}
-.post-block .post-body {
-  background: transparent !important;
 }
