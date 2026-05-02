@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #2e8ce3;
+  background: #cb6cf9;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2508,4 +2508,43 @@ header.header {
   .sidebar-active .footer-fixed {
     left: 320px;
   }
+}
+/* =========================
+   🌙 沉浸阅读模式
+   ========================= */
+.post-focus {
+  background: #050d18 !important;
+  color: #dbe9f5 !important;
+}
+/* 整体UI弱化 */
+.post-focus .header,
+.post-focus .footer,
+.post-focus .sidebar,
+.post-focus .site-nav {
+  opacity: 0.15;
+  transition: opacity 0.4s ease;
+}
+/* hover时浮现 */
+.post-focus .header:hover,
+.post-focus .footer:hover,
+.post-focus .sidebar:hover {
+  opacity: 0.6;
+}
+/* 文章主体 */
+.post-focus .post {
+  max-width: 720px;
+  margin: 80px auto;
+  font-size: 16px;
+  line-height: 1.9;
+}
+/* 标题 */
+.post-focus .post-title {
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+/* 正文排版 */
+.post-focus .post-body p {
+  text-indent: 2em;
+  margin-bottom: 1em;
 }
