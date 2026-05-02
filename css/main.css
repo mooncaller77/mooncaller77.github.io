@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #6e7409;
+  background: #d16944;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2646,20 +2646,20 @@ body::after {
 .post-block:first-of-type::before {
   content: "";
   display: block;
-  width: 120px;
-  height: 120px;
+  width: 100px; /* 稍微小一点 */
+  height: 100px;
   margin: 60px auto 20px auto;
-  background: radial-gradient(circle, #87ceeb 0%, rgba(135,206,235,0.2) 60%, transparent 70%);
+  background: radial-gradient(circle, rgba(135,206,235,0.5) 0%, rgba(135,206,235,0.1) 50%, transparent 70%);
   border-radius: 50%;
-  filter: blur(2px);
-  opacity: 0.8;
+  filter: blur(4px); /* 更模糊，更柔和 */
+  opacity: 0.6; /* 整体更淡 */
 }
 .post-block:first-of-type::after {
-  content: "他们在海边看月亮。";
+  content: "年年康乐，岁岁满全";
   display: block;
   text-align: center;
-  margin: 0 auto 60px auto;
-  font-size: 22px;
+  margin: 0 auto 30px auto;
+  font-size: 27px;
   color: #87ceeb;
   letter-spacing: 3px;
   opacity: 0.85;
