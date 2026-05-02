@@ -6,21 +6,67 @@
   <link rel="stylesheet" href="/css/main.css">
   <style>
     /* ==================================================
-       🌙 世界入口系统（独立 Hero）
+       🌙 世界入口 + 滚动月亮 + 沉浸阅读
        ================================================== */
 
+    /* ----- 全局背景（深海渐变） ----- */
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(
+        to bottom,
+        #050d18 0%,
+        #0b1a2a 50%,
+        #2775b6 100%
+      ) fixed !important;
+      color: #9fbcd3;
+      font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+    }
+
+    /* ----- HERO 区 ----- */
     .site-hero {
-      height: 90vh;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
     }
 
+    /* 月亮本体（独立元素，用于滚动控制） */
+    .moon {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      top: 35%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(135, 206, 235, 0.3),
+        rgba(135, 206, 235, 0.1),
+        transparent 70%
+      );
+      filter: blur(10px);
+      opacity: 0.8;
+      transition: all 0.6s ease;
+      pointer-events: none;
+    }
+
+    /* 月亮滚动后的状态：上升 + 淡出 + 缩小 */
+    .moon.move-up {
+      transform: translate(-50%, -120px) scale(0.85);
+      opacity: 0;
+    }
+
+    /* Hero 文字区域 */
     .hero-inner {
       max-width: 700px;
       padding: 0 20px;
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .hero-title {
@@ -42,58 +88,36 @@
       letter-spacing: 2px;
     }
 
-    .hero-scroll {
+    /* ENTER 按钮 */
+    .hero-enter {
       margin-top: 40px;
       font-size: 12px;
-      opacity: 0.4;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    /* 月亮光晕（稳定版） */
-    .site-hero::before {
-      content: "";
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      top: 30%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: radial-gradient(
-        circle,
-        rgba(135, 206, 235, 0.25),
-        rgba(135, 206, 235, 0.08),
-        transparent 70%
-      );
-      border-radius: 50%;
-      filter: blur(10px);
-      opacity: 0.75;
-      pointer-events: none;
+    .hero-enter:hover {
+      opacity: 1;
+      color: #ffffff;
     }
 
-
-    /* ==================================================
-       🌫 空间断层（关键：把世界和记录分开）
-       ================================================== */
-
-    .scene-divider {
-      height: 120px;
-      background: linear-gradient(
-        to bottom,
-        rgba(5, 13, 24, 0) 0%,
-        rgba(5, 13, 24, 0.6) 40%,
-        rgba(5, 13, 24, 1) 100%
-      );
+    /* Hero 退出状态 */
+    .site-hero.hide-hero .hero-inner {
+      opacity: 0;
+      transform: translateY(-20px);
     }
 
+    .site-hero.hide-hero .moon {
+      opacity: 0;
+    }
 
-    /* ==================================================
-       📓 记录区（从博客 → 信号档案）
-       ================================================== */
-
+    /* ----- 内容区 ----- */
     #content {
       max-width: 800px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 100px 20px 40px;
     }
 
     #posts::before {
@@ -129,23 +153,31 @@
       line-height: 1.6;
     }
 
+    /* ----- 沉浸阅读模式（文章页用） ----- */
+    .post-focus {
+      background: #050d18 !important;
+      color: #dbe9f5 !important;
+    }
 
-    /* ==================================================
-       📡 footer
-       ================================================== */
+    .post-focus .sidebar,
+    .post-focus .header,
+    .post-focus .footer {
+      opacity: 0.2;
+      transition: opacity 0.4s ease;
+    }
 
+    .post-focus .post {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    /* ----- 页脚 ----- */
     .footer {
       text-align: center;
       padding: 60px 20px;
       opacity: 0.4;
-    }
-
-    .footer-inner::after {
-      content: "信号持续发送中";
-      display: block;
-      margin-top: 6px;
-      font-size: 12px;
-      opacity: 0.5;
     }
   </style>
 </head>
@@ -153,9 +185,12 @@
 <body class="home">
 
 <!-- =========================
-     1. 世界入口（独立 HERO）
+     HERO（世界入口）
      ========================= -->
 <section class="site-hero">
+
+  <!-- 月亮元素 -->
+  <div class="moon"></div>
 
   <div class="hero-inner">
 
@@ -169,8 +204,8 @@
       微弱信号，不定期广播。
     </p>
 
-    <div class="hero-scroll">
-      ↓ Enter
+    <div class="hero-enter" onclick="enterWorld()">
+      ENTER
     </div>
 
   </div>
@@ -179,13 +214,7 @@
 
 
 <!-- =========================
-     2. 空间断层（视觉分隔）
-     ========================= -->
-<div class="scene-divider"></div>
-
-
-<!-- =========================
-     3. 记录区（文章）
+     内容区（记录流）
      ========================= -->
 <main id="content">
 
@@ -213,13 +242,41 @@
 
 
 <!-- =========================
-     4. footer
+     footer
      ========================= -->
 <footer class="footer">
-  <div class="footer-inner">
-    <p>信号持续发送中。</p>
-  </div>
+  <p>信号持续发送中。</p>
 </footer>
+
+
+<!-- =========================
+     JS：入口动作 + 月亮滚动
+     ========================= -->
+<script>
+const moon = document.querySelector(".moon");
+const hero = document.querySelector(".site-hero");
+
+function enterWorld() {
+  hero.classList.add("hide-hero");
+
+  setTimeout(() => {
+    document.getElementById("content").scrollIntoView({
+      behavior: "smooth"
+    });
+  }, 300);
+}
+
+/* 滚动控制月亮：页面滚动超过 50px 时，月亮上升并淡出 */
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  if (scrollY > 50) {
+    moon.classList.add("move-up");
+  } else {
+    moon.classList.remove("move-up");
+  }
+});
+</script>
 
 </body>
 </html>
