@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #67ff08;
+  background: #82c6dd;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2605,9 +2605,10 @@ nav.header-inner,
   background-color: transparent !important;
 }
 .footer {
-  background-color: #2775b6 !important;
-  color: rgba(255,255,255,0.8) !important;
-  border-top: none !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  color: rgba(255,255,255,0.6) !important;
+  border-top: 1px solid rgba(135,206,235,0.15) !important;
 }
 .footer a {
   color: #87ceeb !important;
