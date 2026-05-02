@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="/css/main.css">
   <style>
     /* ==================================================
-       🌙 世界入口 + 滚动月亮 + 沉浸阅读
+       🌙 世界入口系统 (独立 Hero) + 滚动月亮
        ================================================== */
 
-    /* ----- 全局背景（深海渐变） ----- */
+    /* ----- 全局背景 (深海渐变，与之前一致) ----- */
     html, body {
       margin: 0;
       padding: 0;
@@ -24,7 +24,7 @@
       font-family: "PingFang SC", "Noto Sans SC", sans-serif;
     }
 
-    /* ----- HERO 区 ----- */
+    /* ----- HERO 区域 ----- */
     .site-hero {
       height: 100vh;
       position: relative;
@@ -33,9 +33,10 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    /* 月亮本体（独立元素，用于滚动控制） */
+    /* 月亮 (独立元素，用于滚动控制) */
     .moon {
       position: absolute;
       width: 170px;
@@ -74,6 +75,7 @@
       letter-spacing: 2px;
       color: #87CEEB;
       margin-bottom: 16px;
+      cursor: pointer;
     }
 
     .hero-subtitle {
@@ -103,17 +105,18 @@
       color: #ffffff;
     }
 
-    /* Hero 退出状态 */
-    .site-hero.hide-hero .hero-inner {
+    /* Hero 退出状态 (点击ENTER后) */
+    .site-hero.hide-hero {
       opacity: 0;
       transform: translateY(-20px);
+      pointer-events: none;
     }
 
     .site-hero.hide-hero .moon {
       opacity: 0;
     }
 
-    /* ----- 内容区 ----- */
+    /* ----- 内容区 (文章列表) ----- */
     #content {
       max-width: 800px;
       margin: 0 auto;
@@ -153,7 +156,24 @@
       line-height: 1.6;
     }
 
-    /* ----- 沉浸阅读模式（文章页用） ----- */
+    /* ----- 返回顶部按钮 ----- */
+    .back-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      font-size: 14px;
+      opacity: 0.4;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 999;
+    }
+
+    .back-top:hover {
+      opacity: 1;
+      color: #87CEEB;
+    }
+
+    /* ----- 沉浸阅读模式 (文章页用) ----- */
     .post-focus {
       background: #050d18 !important;
       color: #dbe9f5 !important;
@@ -185,7 +205,7 @@
 <body class="home">
 
 <!-- =========================
-     HERO（世界入口）
+     HERO (世界入口)
      ========================= -->
 <section class="site-hero">
 
@@ -194,7 +214,7 @@
 
   <div class="hero-inner">
 
-    <h1 class="hero-title">FM214831</h1>
+    <h1 class="hero-title" onclick="backToTop()">FM214831</h1>
 
     <p class="hero-subtitle">
       海边月亮、全糖可乐、以及一些真挚的关系。
@@ -214,7 +234,7 @@
 
 
 <!-- =========================
-     内容区（记录流）
+     内容区 (记录流)
      ========================= -->
 <main id="content">
 
@@ -248,15 +268,19 @@
   <p>信号持续发送中。</p>
 </footer>
 
+<!-- 返回顶部按钮 -->
+<div class="back-top" onclick="backToTop()">↑</div>
+
 
 <!-- =========================
-     JS：入口动作 + 月亮滚动
+     JS：入口动作 + 月亮滚动 + 状态复位
      ========================= -->
 <script>
 const moon = document.querySelector(".moon");
 const hero = document.querySelector(".site-hero");
 
 function enterWorld() {
+  // 1. 隐藏Hero，并平滑滚动到内容区
   hero.classList.add("hide-hero");
 
   setTimeout(() => {
@@ -266,14 +290,31 @@ function enterWorld() {
   }, 300);
 }
 
-/* 滚动控制月亮：页面滚动超过 50px 时，月亮上升并淡出 */
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
+function backToTop() {
+  // 2. 平滑滚动回顶部，并恢复Hero状态
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
-  if (scrollY > 50) {
-    moon.classList.add("move-up");
-  } else {
-    moon.classList.remove("move-up");
+  hero.classList.remove("hide-hero");
+}
+
+/* 滚动控制月亮：页面滚动超过80px时，月亮上升并淡出 */
+window.addEventListener("scroll", () => {
+  const y = window.scrollY;
+
+  if (moon) {
+    if (y > 80) {
+      moon.classList.add("move-up");
+    } else {
+      moon.classList.remove("move-up");
+    }
+  }
+
+  /* 如果用户手动滚动回顶部，则恢复Hero状态 */
+  if (y < 50) {
+    hero.classList.remove("hide-hero");
   }
 });
 </script>
