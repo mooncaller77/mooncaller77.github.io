@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #e9ff30;
+  background: #d28103;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2510,59 +2510,31 @@ header.header {
   }
 }
 body {
-  background-color: #f7f4ef !important;
-  color: #3a3a3a !important;
-}
-.main-inner {
-  background-color: #f7f4ef !important;
-}
-.header,
-.header-inner,
-nav.header-inner,
-.site-brand-container,
-.site-meta {
-  background-color: #2775b6 !important;
-  background: #2775b6 !important;
-}
-.site-title a {
-  color: #fff !important;
-  font-weight: 600 !important;
-}
-.site-subtitle {
-  color: rgba(135,206,235,0.9) !important;
-  font-style: italic !important;
-}
-.site-nav {
-  background-color: #2775b6 !important;
-}
-.menu,
-.menu-item,
-.menu-item a {
-  background-color: transparent !important;
-  color: #87ceeb !important;
-  font-weight: 500 !important;
-}
-.menu-item a:hover {
-  color: #fff !important;
-  background-color: rgba(255,255,255,0.12) !important;
-}
-.menu-item-active a {
-  color: #fff !important;
-  border-bottom: 2px solid #87ceeb !important;
+  background: linear-gradient(to bottom, #050d18 0%, #0b1a2a 40%, #2775b6 100%) !important;
+  color: #9fbcd3 !important;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
 }
 .post-block {
-  background-color: #fff !important;
-  border-radius: 8px !important;
-  box-shadow: 0 2px 12px rgba(39,117,182,0.08) !important;
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(135,206,235,0.15) !important;
+  border-radius: 14px !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: none !important;
   padding: 30px !important;
   margin-bottom: 30px !important;
+  transition: all 0.3s ease !important;
+}
+.post-block:hover {
+  border-color: #87ceeb !important;
+  box-shadow: 0 0 25px rgba(135,206,235,0.25) !important;
+  transform: translateY(-2px) !important;
 }
 .post-title a {
-  color: #2775b6 !important;
+  color: #87ceeb !important;
   font-weight: 600 !important;
 }
 .post-title a:hover {
-  color: #87ceeb !important;
+  color: #fff !important;
 }
 .post-body p {
   text-indent: 2em !important;
@@ -2575,26 +2547,81 @@ a {
 a:hover {
   color: #2775b6 !important;
 }
-.sidebar {
-  background-color: #f7f4ef !important;
-}
-.footer {
-  background-color: #2775b6 !important;
-  color: rgba(255,255,255,0.8) !important;
-}
-.footer a {
-  color: #87ceeb !important;
+hr {
+  border-color: #2775b6 !important;
 }
 pre,
 code,
 .highlight {
-  background-color: #f0ebe3 !important;
+  background-color: rgba(255,255,255,0.05) !important;
   border-left: 3px solid #87ceeb !important;
+  color: #9fbcd3 !important;
 }
 blockquote {
   border-left: 4px solid #2775b6 !important;
   background-color: rgba(135,206,235,0.05) !important;
+  color: #b0c8d8 !important;
 }
-hr {
-  border-color: rgba(39,117,182,0.12) !important;
+.header,
+.header-inner,
+nav.header-inner,
+.site-brand-container,
+.site-meta,
+.site-nav {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+.site-title a {
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+.site-subtitle {
+  color: rgba(135,206,235,0.8) !important;
+  font-style: italic !important;
+}
+.menu,
+.menu-item,
+.menu-item a {
+  background-color: transparent !important;
+  color: #87ceeb !important;
+  font-weight: 500 !important;
+}
+.menu-item a:hover {
+  color: #fff !important;
+}
+.menu-item-active a {
+  color: #fff !important;
+  border-bottom: 2px solid #87ceeb !important;
+}
+.sidebar {
+  background-color: transparent !important;
+}
+.footer {
+  background-color: #2775b6 !important;
+  color: rgba(255,255,255,0.8) !important;
+  border-top: none !important;
+}
+.footer a {
+  color: #87ceeb !important;
+}
+.footer::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 6px;
+  margin: 20px auto;
+  background: linear-gradient(to right, #2775b6, #87ceeb, #2775b6);
+  border-radius: 10px;
+  opacity: 0.6;
+}
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, rgba(135,206,235,0.2), transparent) !important;
+  pointer-events: none;
+  z-index: 0;
 }
