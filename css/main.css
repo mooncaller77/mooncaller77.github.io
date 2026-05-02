@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #283bad;
+  background: #9133e5;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2639,7 +2639,7 @@ body::after {
   background: linear-gradient(to top, rgba(135,206,235,0.15), transparent);
   pointer-events: none;
 }
-/* 13. 首页弯月 */
+/* 13. 首页弯月（带柔光） */
 .post-block:first-of-type::before {
   content: "";
   display: block;
@@ -2648,10 +2648,11 @@ body::after {
   margin: 60px auto 20px auto;
   border-radius: 50%;
   background: transparent;
-  box-shadow: 15px -8px 0 0 rgba(135,206,235,0.7);
-  opacity: 0.8;
+  box-shadow: 15px -8px 0 2px rgba(135,206,235,0.35), 15px -8px 0 8px rgba(135,206,235,0.12);
+/* 外层大光晕 */
+  opacity: 0.9;
 }
-/* 14. 首页标语 */
+/* 14. 首页标语（优化字体） */
 .post-block:first-of-type::after {
   content: "年年康乐，岁岁满全";
   display: block;
@@ -2661,6 +2662,9 @@ body::after {
   color: #87ceeb;
   letter-spacing: 3px;
   opacity: 0.85;
+/* 更优雅的字体组合 */
+  font-family: "STKaiti", "KaiTi", "Noto Serif SC", "Source Han Serif SC", "华文楷体", serif;
+  font-style: italic;
 }
 /* 15. 页脚标语（替代 Hexo & NexT 驱动信息） */
 .footer-inner::before {
