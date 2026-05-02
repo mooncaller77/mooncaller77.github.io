@@ -8,10 +8,11 @@
 <style>
 
 /* =========================
-   🌙 基础系统
+   🌌 基础
    ========================= */
 
 html {
+  background: #050d18; /* 防白闪兜底 */
   scroll-behavior: auto;
 }
 
@@ -19,26 +20,34 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "PingFang SC", "Noto Sans SC", sans-serif;
-  transition: background 0.7s ease, color 0.7s ease;
+  color: #9fbcd3;
+  background: transparent !important;
 }
 
 /* =========================
-   🌌 三状态
+   🌈 背景层（核心修复）
    ========================= */
 
-body.night {
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  transition: background 0.8s ease;
+}
+
+/* 夜晚 */
+body.night + .bg-layer {
   background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6);
-  color: #9fbcd3;
 }
 
-body.dusk {
+/* 黄昏 */
+body.dusk + .bg-layer {
   background: linear-gradient(to bottom, #0b1220, #1b2a3a, #3a5f7a);
-  color: #b8c9d8;
 }
 
-body.reading {
+/* 阅读 */
+body.reading + .bg-layer {
   background: #050d18;
-  color: #dbe9f5;
 }
 
 /* =========================
@@ -50,8 +59,8 @@ body.reading {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   text-align: center;
+  position: relative;
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -96,16 +105,10 @@ body.reading {
   border: 1px solid rgba(135,206,235,0.12);
   text-decoration: none;
   color: #87CEEB;
-  transition: 0.3s;
-}
-
-.chapter-item:hover {
-  border-color: #87CEEB;
-  transform: translateY(-2px);
 }
 
 /* =========================
-   📖 内容区（重点修复）
+   📖 内容区（排版恢复）
    ========================= */
 
 #content {
@@ -114,45 +117,31 @@ body.reading {
   padding: 90px 22px;
 }
 
-/* 文章列表节奏 */
 .post-item {
   padding: 26px 0;
   border-bottom: 1px solid rgba(135,206,235,0.08);
 }
 
-.post-item:last-child {
-  border-bottom: none;
-}
-
-/* =========================
-   ✨ 重点：排版恢复（你丢掉的“好看感”）
-   ========================= */
-
-/* 标题层级 */
 .post-title {
   margin: 0 0 8px;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
-  letter-spacing: 0.3px;
 }
 
 .post-title a {
   color: #87CEEB;
   text-decoration: none;
-  transition: 0.25s ease;
 }
 
 .post-title a:hover {
   color: #ffffff;
 }
 
-/* 摘要 */
 .post-excerpt {
   font-size: 13px;
   line-height: 1.75;
-  opacity: 0.62;
-  letter-spacing: 0.2px;
+  opacity: 0.6;
 }
 
 /* =========================
@@ -165,12 +154,14 @@ body.reading {
   bottom: 18px;
   opacity: 0.45;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.back-top:hover {
+/* =========================
+   🌌 状态（只影响文字，不动背景）
+   ========================= */
+
+body.reading #content {
   opacity: 1;
-  color: #87CEEB;
 }
 
 </style>
@@ -178,116 +169,17 @@ body.reading {
 
 <body class="night">
 
-<!-- =========================
-     HERO
-     ========================= -->
+<!-- 背景层（关键） -->
+<div class="bg-layer"></div>
+
+<!-- HERO -->
 <section class="site-hero">
 
   <div class="moon"></div>
 
   <div>
-
     <h1 onclick="backToTop()">FM214831</h1>
 
     <p>海边月亮 / 同人信号系统</p>
 
     <div onclick="enterWorld()" style="margin-top:30px; cursor:pointer;">
-      ENTER
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     章节地图
-     ========================= -->
-<section class="chapter-map">
-
-  <div class="chapter-grid">
-    <a class="chapter-item" href="/categories/短篇/">短篇</a>
-    <a class="chapter-item" href="/categories/长篇/">长篇</a>
-    <a class="chapter-item" href="/categories/片段/">片段</a>
-    <a class="chapter-item" href="/categories/同人图/">图像</a>
-  </div>
-
-</section>
-
-
-<!-- =========================
-     内容
-     ========================= -->
-<main id="content">
-
-
-
-  <article class="post-item">
-
-    <h2 class="post-title">
-      <a href="/"></a>
-    </h2>
-
-    
-
-  </article>
-
-
-
-</main>
-
-
-<footer style="text-align:center; padding:60px; opacity:0.4;">
-  信号持续发送中
-</footer>
-
-<div class="back-top" onclick="backToTop()">↑</div>
-
-
-<!-- =========================
-     JS（稳定状态机）
-     ========================= -->
-<script>
-
-let mode = "home";
-
-function enterWorld() {
-  mode = "reading";
-
-  document.body.className = "reading";
-  document.querySelector(".site-hero").classList.add("hide");
-
-  setTimeout(() => {
-    document.getElementById("content").scrollIntoView({
-      behavior: "smooth"
-    });
-  }, 180);
-}
-
-function backToTop() {
-  mode = "home";
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-
-  document.body.className = "night";
-  document.querySelector(".site-hero").classList.remove("hide");
-}
-
-window.addEventListener("scroll", () => {
-  if (mode !== "home") return;
-
-  const y = window.scrollY;
-
-  if (y < 120) {
-    document.body.className = "night";
-  } else if (y < 500) {
-    document.body.className = "dusk";
-  } else {
-    document.body.className = "reading";
-  }
-});
-
-</script>
-
-</body>
-</html>
