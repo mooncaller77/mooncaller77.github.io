@@ -3,7 +3,551 @@
 <head>
   <meta charset="UTF-8">
   <title>FM214831</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <!-- 引入主题基础样式 -->
+  <link rel="stylesheet" href="/css/main.css">
+  <!-- 引入自定义样式 -->
+  <link rel="stylesheet" href="/source/_data/styles.styl">
+  <style>
+  /* ==================================================
+   FM214831 · 海边月亮 · 景泰蓝 × 天青蓝（稳定版）
+   ================================================== */
+
+/* 1. 全局背景 */
+html {
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #050d18 0%,
+    #0b1a2a 50%,
+    #2775b6 100%
+  ) fixed !important;
+}
+
+body {
+  background: transparent !important;
+  color: #9fbcd3 !important;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+/* 2. 主容器去底色 */
+.main-inner,
+.content-wrap {
+  background: transparent !important;
+}
+
+/* 3. 内容卡片（统一氛围层） */
+.post,
+.post-block,
+.article {
+  background: rgba(10, 25, 45, 0.38) !important;
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  border: 1px solid rgba(135, 206, 235, 0.12);
+  box-shadow: none !important;
+  padding: 22px;
+  margin-bottom: 22px;
+  transition: all 0.3s ease;
+}
+
+/* hover 提亮 */
+.post:hover,
+.post-block:hover {
+  border-color: #87CEEB;
+  box-shadow: 0 0 25px rgba(135, 206, 235, 0.25);
+  transform: translateY(-2px);
+}
+
+/* 4. 彻底清理正文内层黑底（关键） */
+.post-body,
+.post-content,
+.entry-content {
+  background: transparent !important;
+}
+
+/* 5. 标题 */
+.post-title a {
+  color: #87CEEB !important;
+  font-weight: 600;
+}
+.post-title a:hover {
+  color: #ffffff !important;
+}
+
+/* 6. 正文 */
+.post-body p {
+  text-indent: 2em;
+  line-height: 1.8;
+  margin-bottom: 0.8em;
+}
+
+/* 7. 链接 */
+a {
+  color: #87CEEB !important;
+}
+a:hover {
+  color: #2775b6 !important;
+}
+
+/* 8. 引用与代码 */
+blockquote {
+  border-left: 4px solid #2775b6;
+  background: rgba(135, 206, 235, 0.05);
+  color: #b0c8d8;
+}
+
+pre, code, .highlight {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #87CEEB;
+  color: #9fbcd3;
+}
+
+/* 9. 顶部区域（彻底去掉黑块核心） */
+.site-meta,
+.site-brand-container,
+.brand,
+.site-title,
+.site-subtitle {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-meta::before,
+.site-meta::after,
+.brand::before,
+.brand::after {
+  content: none !important;
+  background: none !important;
+}
+
+/* 10. 导航 */
+.site-nav,
+.menu,
+.menu-item a {
+  background: transparent !important;
+  color: #87CEEB;
+}
+
+.menu-item a:hover {
+  color: #ffffff;
+}
+
+/* 11. 页脚 */
+.footer {
+  background: transparent !important;
+  border-top: 1px solid rgba(135, 206, 235, 0.15);
+  color: rgba(255,255,255,0.6);
+}
+
+.footer::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 6px;
+  margin: 20px auto;
+  background: linear-gradient(to right, #2775b6, #87CEEB, #2775b6);
+  border-radius: 10px;
+  opacity: 0.3;
+}
+
+/* 12. 海面光晕 */
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, rgba(135, 206, 235, 0.15), transparent);
+  pointer-events: none;
+}
+
+// /* 13. 首页月光（柔光光晕） */
+// .post-block:first-of-type::before {
+//   content: "";
+//   display: block;
+//   width: 100px;
+//   height: 100px;
+//   margin: 60px auto 30px auto;
+//   background: radial-gradient(
+//     circle at 50% 50%,
+//     rgba(135, 206, 235, 0.25) 0%,
+//     rgba(135, 206, 235, 0.08) 40%,
+//     rgba(135, 206, 235, 0.02) 65%,
+//     transparent 100%
+//   );
+//   border-radius: 50%;
+//   filter: blur(6px);
+//   opacity: 0.9;
+// }
+
+/* 14. 页脚标语 */
+.footer-inner::before {
+  content: "年年康乐，岁岁满全";
+  display: block;
+  text-align: center;
+  margin-bottom: 12px;
+  font-family: "Georgia", "Noto Serif SC", serif;
+  font-size: 16px;
+  color: #87CEEB;
+  opacity: 0.7;
+  letter-spacing: 3px;
+  font-style: italic;
+}
+
+/* 隐藏页脚 Hexo & NexT 驱动信息 */
+.footer .powered-by,
+.footer .theme-info {
+  display: none !important;
+}
+
+/* ===== 结构减法：减少 UI 感 ===== */
+
+/* 1. 文章卡片去盒子感：去掉背景、边框、阴影、圆角 */
+.post-block {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 20px 0 !important;
+  margin-bottom: 16px !important;
+}
+
+/* 卡片悬浮效果也去掉，不再"浮起来" */
+.post-block:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* 2. 文章之间用极淡的线分隔，而不是卡片 */
+.post-block {
+  border-bottom: 1px solid rgba(135, 206, 235, 0.08) !important;
+}
+
+/* 最后一篇文章不要底线 */
+.post-block:last-of-type {
+  border-bottom: none !important;
+}
+
+/* 3. 文章标题去掉下划线装饰，更干净 */
+.post-title a {
+  border-bottom: none !important;
+}
+
+/* 4. 减少分割线 */
+hr {
+  border-color: rgba(135, 206, 235, 0.06) !important;
+  margin: 24px 0 !important;
+}
+
+/* 5. 页脚分隔线也减弱 */
+.footer {
+  border-top: 1px solid rgba(135, 206, 235, 0.08) !important;
+}
+/* 首页只显示标题，隐藏正文和"阅读全文"按钮 */
+.post-body,
+.post-button,
+.post-more-link {
+  display: none !important;
+}
+
+/* ===== 同人站结构：首页改为"世界入口" ===== */
+
+/* 1. 首页顶部：月光光晕 + 引导语 + 向下提示（占据第一屏核心） */
+.post-block:first-of-type {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 0 !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.post-block:first-of-type::before {
+  /* 月光光晕 */
+  content: "";
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 20px auto;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(135, 206, 235, 0.3) 0%,
+    rgba(135, 206, 235, 0.1) 35%,
+    rgba(135, 206, 235, 0.03) 60%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.85;
+  animation: moonGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+  from { opacity: 0.75; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.05); }
+}
+
+.post-block:first-of-type::after {
+  /* 引导语 */
+  content: "微弱信号，不定期广播。";
+  display: block;
+  font-size: 18px;
+  color: rgba(135, 206, 235, 0.8);
+  letter-spacing: 5px;
+  font-style: italic;
+  margin: 0 auto 30px auto;
+  opacity: 0.9;
+}
+
+/* 向下阅读提示 */
+.post-block:first-of-type .post-title a {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: rgba(135, 206, 235, 0.5) !important;
+  letter-spacing: 3px;
+  border-bottom: none !important;
+}
+
+.post-block:first-of-type .post-title a::after {
+  content: " ↓";
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+/* 首页隐藏文章正文和日期 */
+.home .post-body,
+.home .post-meta {
+  display: none !important;
+}
+
+/* 2. 导航绝对定位到页面下方，作为第二屏入口 */
+.home .header {
+  position: fixed !important;
+  bottom: 40px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  max-width: 800px !important;
+  z-index: 100 !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.home .header-inner {
+  background: transparent !important;
+}
+
+.home .menu,
+.home .site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  background: transparent !important;
+}
+
+.home .menu-item {
+  text-align: center;
+  background: rgba(10, 25, 45, 0.35);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(135, 206, 235, 0.15);
+  border-radius: 12px;
+  padding: 14px 10px;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.home .menu-item:hover {
+  border-color: #87CEEB;
+  background: rgba(10, 25, 45, 0.55);
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.2);
+}
+
+.home .menu-item a {
+  font-size: 16px;
+  color: #87CEEB !important;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-decoration: none !important;
+}
+
+.home .menu-item a::after {
+  display: block;
+  content: "";
+  font-size: 11px;
+  color: rgba(135, 206, 235, 0.5);
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* 给每个菜单项加自定义描述 */
+.home .menu-item:nth-child(2) a::after { content: "一些在凌晨发生的故事"; }
+.home .menu-item:nth-child(3) a::after { content: "仍在持续生长的某些关系"; }
+.home .menu-item:nth-child(4) a::after { content: "视觉化的记忆碎片"; }
+
+/* "首页"和"归档"不要卡片背景 */
+.home .menu-item:first-child,
+.home .menu-item:last-child {
+  background: transparent !important;
+  border: none !important;
+  backdrop-filter: none;
+}
+
+/* 3. 文章列表：标题更松散 */
+.home .post-block {
+  border-bottom: 1px solid rgba(135, 206, 235, 0.06) !important;
+  padding: 18px 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.home .post-block .post-title {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px;
+}
+
+/* 4. 页脚 */
+.footer-inner::after {
+  content: "信号持续发送中。";
+  display: block;
+  text-align: center;
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(135, 206, 235, 0.4);
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+/* 5. 修复：首页标题栏的背景要完全透明 */
+.home .header,
+.home .header-inner,
+.home .site-brand-container,
+.home .site-meta,
+.home .site-nav {
+  background: transparent !important;
+}
+
+/* =========================
+   HERO 独立系统
+   ========================= */
+
+.site-hero {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-inner {
+  max-width: 700px;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: 48px;
+  letter-spacing: 2px;
+  color: #87CEEB;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 18px;
+}
+
+.hero-note {
+  font-size: 13px;
+  opacity: 0.6;
+  letter-spacing: 2px;
+}
+
+.hero-scroll {
+  margin-top: 40px;
+  font-size: 12px;
+  opacity: 0.4;
+  letter-spacing: 3px;
+}
+
+/* 月光光晕 */
+.site-hero::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(135, 206, 235, 0.25),
+    rgba(135, 206, 235, 0.08),
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* 内容区 */
+#content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+#posts {
+  margin-top: 40px;
+}
+
+#posts::before {
+  content: "记录";
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.3;
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+}
+
+/* 文章卡片 */
+.post-item {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(135, 206, 235, 0.08);
+}
+
+.post-title a {
+  color: #87CEEB;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.post-title a:hover {
+  color: #ffffff;
+}
+
+.post-excerpt {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  padding: 60px 20px;
+  opacity: 0.4;
+}
+  </style>
 </head>
 
 <body class="home">
