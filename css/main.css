@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #1d6134;
+  background: #6e7409;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2639,25 +2639,26 @@ body::after {
   background: linear-gradient(to top, rgba(135,206,235,0.15), transparent);
   pointer-events: none;
 }
-/* 13. 首页月亮 */
-.posts-collapse {
+/* 13. 首页月亮 & 标语（只出现一次） */
+.post-block:first-of-type {
   position: relative;
 }
-.posts-collapse::before {
+.post-block:first-of-type::before {
   content: "";
   display: block;
   width: 120px;
   height: 120px;
-  margin: 60px auto 20px;
+  margin: 60px auto 20px auto;
   background: radial-gradient(circle, #87ceeb 0%, rgba(135,206,235,0.2) 60%, transparent 70%);
   border-radius: 50%;
   filter: blur(2px);
   opacity: 0.8;
 }
-.posts-collapse::after {
+.post-block:first-of-type::after {
   content: "他们在海边看月亮。";
   display: block;
   text-align: center;
+  margin: 0 auto 60px auto;
   font-size: 22px;
   color: #87ceeb;
   letter-spacing: 3px;
