@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #8f2145;
+  background: #ff06ff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2633,4 +2633,27 @@ body::after {
   background: linear-gradient(to top, rgba(135,206,235,0.15), transparent) !important;
   pointer-events: none;
   z-index: 0;
+}
+.moon {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  margin-left: -60px;
+  background: radial-gradient(circle, #87ceeb 0%, rgba(135,206,235,0.2) 60%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.8;
+  z-index: 1;
+}
+.hero-text {
+  text-align: center;
+  margin: 160px 0 60px;
+  font-size: 22px;
+  color: #87ceeb;
+  letter-spacing: 3px;
+  opacity: 0.85;
+  position: relative;
+  z-index: 2;
 }
