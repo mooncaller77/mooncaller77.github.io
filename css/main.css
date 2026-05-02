@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #94ff38;
+  background: #8aff91;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2639,18 +2639,6 @@ body::after {
   background: linear-gradient(to top, rgba(135,206,235,0.15), transparent);
   pointer-events: none;
 }
-/* 13. 首页月光（柔光光晕） */
-.post-block:first-of-type::before {
-  content: "";
-  display: block;
-  width: 100px;
-  height: 100px;
-  margin: 60px auto 30px auto;
-  background: radial-gradient(circle at 50% 50%, rgba(135,206,235,0.25) 0%, rgba(135,206,235,0.08) 40%, rgba(135,206,235,0.02) 65%, transparent 100%);
-  border-radius: 50%;
-  filter: blur(6px);
-  opacity: 0.9;
-}
 /* 14. 页脚标语 */
 .footer-inner::before {
   content: "年年康乐，岁岁满全";
@@ -2713,22 +2701,30 @@ hr {
   display: none !important;
 }
 /* ===== 同人站结构：分类入口卡片化 & 情绪引导 ===== */
-/* 1. 首页顶部：给月光光晕加一句引导语（在月光下方） */
+/* 1. 首页顶部：月光光晕 + 引导语 */
 .post-block:first-of-type::before {
+/* 这是月光光晕 */
+  content: "";
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 60px auto 10px auto;
+  background: radial-gradient(circle at 50% 50%, rgba(135,206,235,0.25) 0%, rgba(135,206,235,0.08) 40%, rgba(135,206,235,0.02) 65%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(6px);
+  opacity: 0.9;
+}
+.post-block:first-of-type::after {
+/* 这是引导语文字 */
   content: "微弱信号，不定期广播。";
   display: block;
   text-align: center;
-  margin: 40px auto 20px auto;
+  margin: 10px auto 30px auto;
   font-size: 16px;
   color: rgba(135,206,235,0.7);
   letter-spacing: 4px;
   font-style: italic;
   opacity: 0.9;
-  height: auto;
-  width: auto;
-  background: transparent;
-  border-radius: 0;
-  filter: none;
 }
 /* 2. 弱化“文章列表”的标题，改成“最近回响” */
 .home .posts-expand .post-title,
