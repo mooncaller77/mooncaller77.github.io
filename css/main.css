@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #cf32ff;
+  background: #d9f5b9;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2639,21 +2639,19 @@ body::after {
   background: linear-gradient(to top, rgba(135,206,235,0.15), transparent);
   pointer-events: none;
 }
-/* 13. 首页月亮 & 标语（只出现一次） */
-.post-block:first-of-type {
-  position: relative;
-}
+/* 13. 首页弯月 */
 .post-block:first-of-type::before {
   content: "";
   display: block;
-  width: 100px; /* 稍微小一点 */
-  height: 100px;
+  width: 60px;
+  height: 60px;
   margin: 60px auto 20px auto;
-  background: radial-gradient(circle, rgba(135,206,235,0.5) 0%, rgba(135,206,235,0.1) 50%, transparent 70%);
   border-radius: 50%;
-  filter: blur(4px); /* 更模糊，更柔和 */
-  opacity: 0.6; /* 整体更淡 */
+  background: transparent;
+  box-shadow: 15px -8px 0 0 rgba(135,206,235,0.7);
+  opacity: 0.8;
 }
+/* 14. 首页标语 */
 .post-block:first-of-type::after {
   content: "年年康乐，岁岁满全";
   display: block;
@@ -2663,4 +2661,17 @@ body::after {
   color: #87ceeb;
   letter-spacing: 3px;
   opacity: 0.85;
+}
+/* 15. 页脚标语（替代 Hexo & NexT 驱动信息） */
+.footer-inner::before {
+  content: "他们在海边看月亮。";
+  display: block;
+  text-align: center;
+  margin-bottom: 12px;
+  font-family: "Georgia", "Noto Serif SC", serif;
+  font-size: 15px;
+  color: #87ceeb;
+  opacity: 0.7;
+  letter-spacing: 3px;
+  font-style: italic;
 }
