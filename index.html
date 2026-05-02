@@ -8,51 +8,36 @@
 <style>
 
 /* =========================
-   🌌 基础（保留你的风格）
+   🌊 原始配色系统（完全保留你）
    ========================= */
 
-html {
-  scroll-behavior: auto;
-  background: #050d18; /* 防白闪 */
-}
-
-body {
+html, body {
   margin: 0;
+  padding: 0;
   min-height: 100vh;
   font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
 
-  /* ✔ 保留你的蓝色体系 */
+/* 夜（景泰蓝核心） */
+body.night {
+  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6);
   color: #9fbcd3;
 }
 
-/* =========================
-   🌈 背景层（防闪核心）
-   ========================= */
-
-.bg-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  transition: background 0.8s ease;
-}
-
-/* 夜晚（恢复你的原始配色） */
-body.night + .bg-layer {
-  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6);
-}
-
-/* 黄昏 */
-body.dusk + .bg-layer {
+/* 黄昏（过渡天青蓝） */
+body.dusk {
   background: linear-gradient(to bottom, #0b1220, #1b2a3a, #3a5f7a);
+  color: #b8c9d8;
 }
 
-/* 阅读（只是压暗，不改变体系） */
-body.reading + .bg-layer {
-  background: linear-gradient(to bottom, #050d18, #081521, #0b1a2a);
+/* 阅读（深海夜蓝，不破坏体系） */
+body.reading {
+  background: #050d18;
+  color: #dbe9f5;
 }
 
 /* =========================
-   🌙 HERO
+   🌌 HERO
    ========================= */
 
 .site-hero {
@@ -65,7 +50,7 @@ body.reading + .bg-layer {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.site-hero.hide {
+.site-hero.hide-hero {
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
@@ -79,16 +64,13 @@ body.reading + .bg-layer {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
-
-  /* ✔ 保留你的原月亮色 */
   background: radial-gradient(circle, rgba(135,206,235,0.3), transparent);
-
   filter: blur(10px);
   opacity: 0.85;
 }
 
 /* =========================
-   📚 章节地图（不动）
+   📚 章节地图（原样保留）
    ========================= */
 
 .chapter-map {
@@ -99,43 +81,48 @@ body.reading + .bg-layer {
 .chapter-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  max-width: 760px;
+  gap: 20px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .chapter-item {
-  padding: 18px;
-  border: 1px solid rgba(135,206,235,0.12);
+  padding: 20px;
+  border: 1px solid rgba(135, 206, 235, 0.1);
   text-decoration: none;
   color: #87CEEB;
 }
 
 /* =========================
-   📖 内容排版（恢复质感）
+   📖 内容排版（恢复你原本质感）
    ========================= */
 
 #content {
-  max-width: 820px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 90px 22px;
+  padding: 100px 20px 40px;
+}
+
+#posts::before {
+  content: "SIGNAL ARCHIVE";
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 6px;
+  opacity: 0.25;
+  margin-bottom: 30px;
 }
 
 .post-item {
-  padding: 26px 0;
-  border-bottom: 1px solid rgba(135,206,235,0.08);
-}
-
-.post-title {
-  margin: 0 0 8px;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.4;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(135, 206, 235, 0.08);
 }
 
 .post-title a {
   color: #87CEEB;
   text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .post-title a:hover {
@@ -143,21 +130,19 @@ body.reading + .bg-layer {
 }
 
 .post-excerpt {
+  margin-top: 8px;
   font-size: 13px;
-  line-height: 1.75;
-  opacity: 0.6;
+  opacity: 0.55;
+  line-height: 1.6;
 }
 
 /* =========================
-   ❗关键修复：防“阅读模式内容消失”
+   ❗关键修复：防 ENTER 后“空内容”
    ========================= */
 
-body.reading #content,
-body.reading .chapter-map,
-body.reading .post-item {
+body.reading #content {
   opacity: 1 !important;
   visibility: visible !important;
-  transform: none !important;
 }
 
 /* =========================
@@ -166,9 +151,10 @@ body.reading .post-item {
 
 .back-top {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
-  opacity: 0.45;
+  right: 20px;
+  bottom: 20px;
+  font-size: 14px;
+  opacity: 0.4;
   cursor: pointer;
 }
 
@@ -177,15 +163,12 @@ body.reading .post-item {
 
 <body class="night">
 
-<!-- 背景层 -->
-<div class="bg-layer"></div>
-
-<!-- HERO -->
 <section class="site-hero">
 
   <div class="moon"></div>
 
-  <div>
+  <div class="hero-inner">
+
     <h1 onclick="backToTop()">FM214831</h1>
 
     <p>海边月亮 / 同人信号系统</p>
@@ -193,12 +176,12 @@ body.reading .post-item {
     <div onclick="enterWorld()" style="margin-top:30px; cursor:pointer;">
       ENTER
     </div>
+
   </div>
 
 </section>
 
 
-<!-- chapter -->
 <section class="chapter-map">
   <div class="chapter-grid">
     <a class="chapter-item" href="/categories/短篇/">短篇</a>
@@ -209,17 +192,18 @@ body.reading .post-item {
 </section>
 
 
-<!-- content -->
 <main id="content">
 
 
 
 <article class="post-item">
+
   <h2 class="post-title">
     <a href="/"></a>
   </h2>
 
   
+
 </article>
 
 
@@ -230,30 +214,27 @@ body.reading .post-item {
 <div class="back-top" onclick="backToTop()">↑</div>
 
 
-<!-- =========================
-   JS（稳定无闪版本）
-   ========================= -->
 <script>
 
 let mode = "home";
 
+/* ENTER：只锁状态，不抢 scroll */
 function enterWorld() {
   mode = "reading";
 
   document.body.classList.remove("night", "dusk");
   document.body.classList.add("reading");
 
-  document.querySelector(".site-hero").classList.add("hide");
+  document.querySelector(".site-hero").classList.add("hide-hero");
 
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      document.getElementById("content").scrollIntoView({
-        behavior: "smooth"
-      });
-    }, 120);
-  });
+  setTimeout(() => {
+    document.getElementById("content").scrollIntoView({
+      behavior: "smooth"
+    });
+  }, 200);
 }
 
+/* 返回 */
 function backToTop() {
   mode = "home";
 
@@ -262,9 +243,10 @@ function backToTop() {
   document.body.classList.remove("reading", "dusk");
   document.body.classList.add("night");
 
-  document.querySelector(".site-hero").classList.remove("hide");
+  document.querySelector(".site-hero").classList.remove("hide-hero");
 }
 
+/* scroll 只在 home 生效（避免覆盖 ENTER） */
 window.addEventListener("scroll", () => {
   if (mode !== "home") return;
 
@@ -272,10 +254,13 @@ window.addEventListener("scroll", () => {
 
   if (y < 120) {
     document.body.classList.add("night");
+    document.body.classList.remove("dusk", "reading");
   } else if (y < 500) {
     document.body.classList.add("dusk");
+    document.body.classList.remove("night", "reading");
   } else {
     document.body.classList.add("reading");
+    document.body.classList.remove("night", "dusk");
   }
 });
 
