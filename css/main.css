@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #4170ff;
+  background: #57b13b;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2700,48 +2700,60 @@ hr {
 .post-more-link {
   display: none !important;
 }
-/* ===== 同人站结构：重构布局顺序（世界入口感） ===== */
-/* 1. 首页顶部：月光光晕 + 引导语（使用 order: 1 确保最先显示） */
+/* ===== 同人站结构：首页改为“世界入口” ===== */
+/* 1. 首页顶部：月光光晕放大、居中、占据第一屏核心位置 */
 .post-block:first-of-type {
   display: flex;
   flex-direction: column;
-  order: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh; /* 让第一屏占据大部分视野 */
+  padding-top: 0 !important;
   border-top: none !important;
-  padding-top: 60px !important;
+  border-bottom: none !important;
+  text-align: center;
 }
 .post-block:first-of-type::before {
-/* 月光光晕 */
+/* 月光光晕放大，更有存在感 */
   content: "";
   display: block;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 10px auto;
-  background: radial-gradient(circle at 50% 50%, rgba(135,206,235,0.25) 0%, rgba(135,206,235,0.08) 40%, rgba(135,206,235,0.02) 65%, transparent 100%);
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 20px auto;
+  background: radial-gradient(circle at 50% 50%, rgba(135,206,235,0.3) 0%, rgba(135,206,235,0.1) 35%, rgba(135,206,235,0.03) 60%, transparent 100%);
   border-radius: 50%;
-  filter: blur(6px);
-  opacity: 0.9;
+  filter: blur(8px);
+  opacity: 0.85;
+  animation: moonGlow 4s ease-in-out infinite alternate;
 }
 .post-block:first-of-type::after {
-/* 引导语文字 */
+/* 引导语文字，字号更大，像封面标语 */
   content: "微弱信号，不定期广播。";
   display: block;
-  text-align: center;
-  margin: 10px auto 20px auto;
-  font-size: 16px;
-  color: rgba(135,206,235,0.7);
-  letter-spacing: 4px;
+  font-size: 18px;
+  color: rgba(135,206,235,0.8);
+  letter-spacing: 5px;
   font-style: italic;
+  margin: 0 auto 40px auto;
   opacity: 0.9;
-  order: 2;
 }
-/* 2. 弱化文章标题，改为“最近回响” */
+/* 2. “Enter / 进入” 动作：一个向下阅读的暗示 */
 .home .post-block:first-of-type .post-title {
-  font-size: 18px !important;
-  font-weight: 500 !important;
-  order: 3;
+  font-size: 20px !important;
+  font-weight: 400 !important;
   text-align: center;
+  margin-bottom: 20px;
 }
-/* 3. 分类导航卡片式入口（移到下方，使用 order: 4） */
+.home .post-block:first-of-type .post-title a {
+  color: rgba(135,206,235,0.6) !important;
+  letter-spacing: 3px;
+  border-bottom: none !important;
+  transition: color 0.4s ease;
+}
+.home .post-block:first-of-type .post-title a:hover {
+  color: #87ceeb !important;
+}
+/* 3. 导航卡片移到文章列表下方，作为“分类入口” */
 .home .menu,
 .home .site-nav {
   display: flex;
@@ -2750,10 +2762,10 @@ hr {
   justify-content: center;
   justify-content: center;
   gap: 16px;
-  margin: 40px auto 40px auto;
+  margin: 40px auto 30px auto;
   max-width: 800px;
   background: transparent !important;
-  order: 4;
+  order: 10; /* 用 order 推到文章列表下方 */
 }
 .home .menu-item {
   flex: 1 1 180px;
@@ -2808,13 +2820,22 @@ hr {
   padding: 8px 4px;
   backdrop-filter: none;
 }
-/* 4. 弱化时间感 */
-.home .post-meta {
-  font-size: 12px !important;
-  color: rgba(135,206,235,0.35) !important;
-  order: 5;
+/* 4. 文章列表：标题更松散，时间感极弱 */
+.home .post-block {
+  border-bottom: 1px solid rgba(135,206,235,0.06) !important;
+  padding: 18px 0 !important;
+  margin-bottom: 0 !important;
 }
-/* 5. 页脚收尾：信号感 */
+.home .post-block .post-title {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px;
+}
+.home .post-meta {
+  font-size: 11px !important;
+  color: rgba(135,206,235,0.25) !important;
+}
+/* 5. 页脚 */
 .footer-inner::after {
   content: "信号持续发送中。";
   display: block;
@@ -2824,4 +2845,14 @@ hr {
   color: rgba(135,206,235,0.4);
   letter-spacing: 2px;
   font-style: italic;
+}
+@keyframes moonGlow {
+  from {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
