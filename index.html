@@ -183,3 +183,98 @@ body.reading #content {
     <p>海边月亮 / 同人信号系统</p>
 
     <div onclick="enterWorld()" style="margin-top:30px; cursor:pointer;">
+      ENTER
+    </div>
+  </div>
+
+</section>
+
+
+<!-- 章节 -->
+<section class="chapter-map">
+  <div class="chapter-grid">
+    <a class="chapter-item" href="/categories/短篇/">短篇</a>
+    <a class="chapter-item" href="/categories/长篇/">长篇</a>
+    <a class="chapter-item" href="/categories/片段/">片段</a>
+    <a class="chapter-item" href="/categories/同人图/">图像</a>
+  </div>
+</section>
+
+
+<!-- 内容 -->
+<main id="content">
+
+
+
+  <article class="post-item">
+
+    <h2 class="post-title">
+      <a href="/"></a>
+    </h2>
+
+    
+
+  </article>
+
+
+
+</main>
+
+
+<div class="back-top" onclick="backToTop()">↑</div>
+
+
+<!-- JS -->
+<script>
+
+let mode = "home";
+
+function enterWorld() {
+  mode = "reading";
+
+  document.body.classList.remove("night", "dusk");
+  document.body.classList.add("reading");
+
+  document.querySelector(".site-hero").classList.add("hide");
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      document.getElementById("content").scrollIntoView({
+        behavior: "smooth"
+      });
+    }, 120);
+  });
+}
+
+function backToTop() {
+  mode = "home";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  document.body.classList.remove("reading", "dusk");
+  document.body.classList.add("night");
+
+  document.querySelector(".site-hero").classList.remove("hide");
+}
+
+window.addEventListener("scroll", () => {
+  if (mode !== "home") return;
+
+  const y = window.scrollY;
+
+  if (y < 120) {
+    document.body.classList.add("night");
+    document.body.classList.remove("dusk", "reading");
+  } else if (y < 500) {
+    document.body.classList.add("dusk");
+    document.body.classList.remove("night", "reading");
+  } else {
+    document.body.classList.add("reading");
+    document.body.classList.remove("night", "dusk");
+  }
+});
+
+</script>
+
+</body>
+</html>
