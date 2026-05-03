@@ -105,6 +105,7 @@ html, body {
 .footer, .site-footer {
   display: none !important;
 }
+
 </style>
 <head>
   <meta charset="UTF-8">
@@ -229,7 +230,8 @@ html, body {
   background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6) fixed;
   color: #9fbcd3;
   font-family: "PingFang SC", "Noto Sans SC", sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .header, .site-nav, .site-brand-container, .site-header,
@@ -244,13 +246,47 @@ html, body {
 }
 
 .moon {
-  position: absolute; width: 160px; height: 160px;
-  top: 30%; left: 50%; transform: translateX(-50%);
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 21%;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(135,206,235,0.25), transparent);
-  filter: blur(10px);
+  background:
+    radial-gradient(circle, rgba(224,238,232,0.18) 0 48%, transparent 62%);
+  filter: blur(7px);
+  opacity: 0.58;
+  pointer-events: none;
 }
 
+.moon::before {
+  content: "";
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(232,239,224,0.34);
+  box-shadow: 0 0 26px rgba(194,226,229,0.16);
+  filter: blur(2.2px);
+}
+
+.moon::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  top: 52%;
+  height: 34px;
+  transform: translateY(-50%) rotate(-3deg);
+  border-radius: 999px;
+  background: linear-gradient(to right, transparent, rgba(7,18,31,0.2) 18%, rgba(197,226,232,0.08) 48%, rgba(7,18,31,0.18) 76%, transparent);
+  filter: blur(7px);
+  opacity: 0.86;
+}
 .fm {
   font-size: 54px; font-weight: 400; letter-spacing: 3px;
   font-family: 'Nunito', sans-serif; color: #a6e3ff;
@@ -279,9 +315,13 @@ html, body {
 .hero-enter:hover,
 .hero-enter:focus,
 .hero-enter:visited {
+  position: relative;
   display: inline-block;
-  margin-top: 24px; font-size: 16px; color: #87CEEB;
-  cursor: pointer; text-shadow: 0 0 10px rgba(135,206,235,0.6);
+  margin-top: 24px;
+  padding: 8px 14px;
+  overflow: hidden;
+  font-size: 16px; color: #93d6ec;
+  cursor: pointer; text-shadow: 0 0 8px rgba(170,222,235,0.32);
   text-decoration: none !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
@@ -290,12 +330,134 @@ html, body {
 }
 
 .hero-enter:hover,
-.hero-enter:focus { color: #ffffff; }
-.hero-enter::before,
-.hero-enter::after { display: none !important; }
+.hero-enter:focus { color: #eefbff; }
+.hero-enter::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 0;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, transparent, rgba(246,248,226,0.72), rgba(159,220,236,0.38), transparent);
+  opacity: 0;
+  transition: width 0.42s ease, opacity 0.42s ease;
+}
+.hero-enter::after {
+  content: "";
+  position: absolute;
+  inset: 2px -40%;
+  background: linear-gradient(105deg, transparent 34%, rgba(238,246,230,0.18) 48%, transparent 62%);
+  transform: translateX(-70%);
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-enter:hover::before,
+.hero-enter:focus::before {
+  width: 100%;
+  opacity: 1;
+}
+.hero-enter:hover::after,
+.hero-enter:focus::after {
+  animation: waterShimmer 1.2s ease-out;
+}
 
 @media (max-width: 640px) {
   .title-line { gap: 12px; transform: scale(0.82); }
+}
+
+/* 页面底部：让海面融进背景，只保留潮湿的暗蓝和散开的水纹 */
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 42vh;
+  min-height: 240px;
+  background:
+    radial-gradient(ellipse at 50% 10%, rgba(218,232,226,0.12) 0%, rgba(126,184,205,0.055) 34%, transparent 66%),
+    radial-gradient(ellipse at 18% 72%, rgba(88,158,190,0.12), transparent 42%),
+    radial-gradient(ellipse at 78% 82%, rgba(52,126,165,0.12), transparent 45%),
+    linear-gradient(to bottom, transparent 0%, rgba(8,28,43,0.18) 24%, rgba(9,39,57,0.42) 58%, rgba(6,28,43,0.62) 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.12) 16%, #000 48%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.12) 16%, #000 48%);
+  pointer-events: none;
+  z-index: 10;
+}
+/* 海面上的月亮倒影：平面薄光，像潮水一样缓慢呼吸 */
+.moon-reflection {
+  position: fixed;
+  bottom: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(62vw, 520px);
+  height: 96px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(226, 236, 228, 0.38) 0%,
+    rgba(188, 218, 226, 0.2) 34%,
+    rgba(124, 178, 205, 0.08) 66%,
+    transparent 86%
+  );
+  filter: blur(4px);
+  opacity: 0.72;
+  z-index: 11;
+  pointer-events: none;
+  animation: tideBreath 5.2s ease-in-out infinite alternate;
+}
+
+.moon-reflection::before,
+.moon-reflection::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.moon-reflection::before {
+  top: 13px;
+  width: 76%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(235,240,224,0.28), transparent);
+  box-shadow: 0 14px 14px rgba(190,220,228,0.08), 0 28px 18px rgba(150,202,218,0.055);
+  opacity: 0.76;
+  animation: rippleLine 4.8s ease-in-out infinite alternate;
+}
+
+.moon-reflection::after {
+  top: 30px;
+  width: 56%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(230,238,224,0.2), transparent);
+  box-shadow: 0 10px 14px rgba(170,214,224,0.055);
+  opacity: 0.7;
+  animation: rippleLineSoft 5.6s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes tideBreath {
+  0% { opacity: 0.34; transform: translateX(-50%) scaleX(0.72) scaleY(0.72) translateY(8px); filter: blur(9px); }
+  42% { opacity: 0.78; transform: translateX(-50%) scaleX(1.18) scaleY(1.04) translateY(1px); filter: blur(5.5px); }
+  100% { opacity: 0.46; transform: translateX(-50%) scaleX(1.42) scaleY(0.86) translateY(5px); filter: blur(8px); }
+}
+
+@keyframes rippleLine {
+  0% { width: 48%; opacity: 0.34; transform: translateX(-50%) translateY(5px); }
+  48% { width: 96%; opacity: 0.82; transform: translateX(-50%) translateY(0); }
+  100% { width: 62%; opacity: 0.44; transform: translateX(-50%) translateY(6px); }
+}
+
+@keyframes rippleLineSoft {
+  0% { width: 34%; opacity: 0.26; transform: translateX(-50%) translateY(5px); }
+  55% { width: 78%; opacity: 0.68; transform: translateX(-50%) translateY(0); }
+  100% { width: 46%; opacity: 0.34; transform: translateX(-50%) translateY(6px); }
+}
+@keyframes waterShimmer {
+  0% { opacity: 0; transform: translateX(-70%); }
+  24% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(70%); }
 }
 </style>
 
@@ -314,8 +476,10 @@ html, body {
       </div>
     </div>
     <p>全糖可乐 / 海边月亮 / 一些真挚的关系</p>
-    <a class="hero-enter" href="/map/">ENTER</a>
+    <a class="hero-enter" href="/map/">进入频段 开始收听</a>
   </div>
+  <!-- 月亮在海面的倒影（纯装饰） -->
+  <div class="moon-reflection"></div>
 </section>
 
 
