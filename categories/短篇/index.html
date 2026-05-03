@@ -127,7 +127,7 @@ html, body {
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="FM214831">
-<meta property="og:url" content="https://mooncaller77.github.io/archives/2026/04/index.html">
+<meta property="og:url" content="https://mooncaller77.github.io/categories/%E7%9F%AD%E7%AF%87/index.html">
 <meta property="og:site_name" content="FM214831">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="MOONCALLER77">
@@ -135,13 +135,13 @@ html, body {
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://mooncaller77.github.io/archives/2026/04/">
+<link rel="canonical" href="https://mooncaller77.github.io/categories/%E7%9F%AD%E7%AF%87/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2026/04/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/短篇/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | FM214831</title>
+<title>分类: 短篇 | FM214831</title>
   
 
 
@@ -191,7 +191,7 @@ html, body {
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">FM214831</h1>
+      <p class="site-title">FM214831</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">微弱信号，不定期广播。<br>内容包含：海边月亮、全糖可乐、以及一些真挚的关系。</p>
@@ -215,99 +215,248 @@ html, body {
 
 </header>
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">MOONCALLER77</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-  </nav>
-</div>
-
-        </div>
-      </div>
     </div>
 
-    
-  </aside>
+    <div class="main-inner category posts-collapse">
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at 50% 24%, rgba(135,206,235,0.18), transparent 24rem), linear-gradient(to bottom, #050d18, #0b1a2a 52%, #2775b6) fixed;
+  color: #b7d4e8;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer, .sidebar {
+  display: none !important;
+}
+
+a, a:hover, a:focus, a:visited,
+.card, .card:hover, .card:focus, .card:visited,
+.card *, .map-link, .map-link:hover, .map-link:focus, .map-link:visited,
+.home-link, .home-link:hover, .home-link:focus, .home-link:visited,
+.post-item, .post-item:hover, .post-item:focus, .post-item:visited,
+.post-item *, .post-item *:hover, .post-item *:focus, .post-item *:visited {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+.signal-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 18px;
+  transform-origin: center;
+}
+
+.fm-mini {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: 'Sniglet', "PingFang SC", sans-serif;
+  color: #a6e3ff;
+  text-shadow: 0 0 10px rgba(135,206,235,0.5), 0 0 22px rgba(39,117,182,0.3);
+}
+
+.digital-mini {
+  display: flex;
+  gap: 5px;
+}
+
+.seg-char {
+  position: relative;
+  width: 18px;
+  height: 32px;
+}
+
+.seg {
+  position: absolute;
+  background: rgba(120,200,255,0.08);
+}
+
+.seg.on {
+  background: #87ceeb;
+  box-shadow: 0 0 7px rgba(135,206,235,0.85);
+}
+
+.seg.a { top: 0; left: 4px; width: 10px; height: 2px; }
+.seg.b { top: 3px; right: 0; width: 2px; height: 11px; }
+.seg.c { bottom: 3px; right: 0; width: 2px; height: 11px; }
+.seg.d { bottom: 0; left: 4px; width: 10px; height: 2px; }
+.seg.e { bottom: 3px; left: 0; width: 2px; height: 11px; }
+.seg.f { top: 3px; left: 0; width: 2px; height: 11px; }
+.seg.g { top: 15px; left: 4px; width: 10px; height: 2px; }
+
+.page-shell {
+  min-height: 100vh;
+  width: min(820px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 68px 0 56px;
+  box-sizing: border-box;
+}
+
+.page-heading {
+  text-align: center;
+  margin: 0 0 34px;
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #d7f4ff;
+  text-shadow: 0 0 14px rgba(135,206,235,0.38);
+}
+
+.page-heading p {
+  margin: 10px 0 0;
+  font-size: 22px;
+  font-family: 'Long Cang', 'ZCOOL XiaoWei', cursive !important;
+  color: rgba(206,234,246,0.84);
+  letter-spacing: 1px;
+}
+
+.soft-panel {
+  position: relative;
+  border: 1px solid rgba(135,206,235,0.18);
+  background: rgba(5,13,24,0.18);
+  backdrop-filter: blur(6px);
+}
+
+.soft-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 32%, rgba(135,206,235,0.08));
+  opacity: 0.72;
+}
+
+@media (max-width: 640px) {
+  .page-shell { width: min(100% - 28px, 820px); padding-top: 44px; }
+  .signal-mark { transform: scale(0.9); }
+  .page-heading h1 { font-size: 28px; }
+  .page-heading p { font-size: 20px; }
+}
 
 
-    </div>
+.category-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
-    <div class="main-inner archive posts-collapse">
+.post-list {
+  display: grid;
+  gap: 12px;
+}
 
+.post-item {
+  position: relative;
+  display: block;
+  padding: 20px 22px;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #eaf8ff;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
 
-  
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 2 篇日志。 继续努力。</span>
-      </div>
+.post-item:hover,
+.post-item:focus {
+  transform: translateY(-2px);
+  border-color: rgba(135,206,235,0.48);
+  background: rgba(19,57,88,0.3);
+  outline: none;
+}
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2026<span class="collection-year-count">2</span></span>
-    </div>
+.post-title {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #f6fcff;
+}
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2026-04-29T22:38:11+08:00"
-              content="2026-04-29">
-          04-29
-        </time>
-      </div>
+.post-meta {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(190,222,238,0.62);
+}
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/04/29/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
+.empty-note {
+  padding: 28px;
+  border-radius: 8px;
+  text-align: center;
+  color: rgba(206,234,246,0.76);
+}
 
-      
-    </header>
-  </article>
+.map-link {
+  display: block;
+  width: fit-content;
+  margin: 32px auto 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: rgba(198,232,246,0.78);
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  background: rgba(5,13,24,0.18);
+  transition: color 0.22s ease, background 0.22s ease;
+}
 
+.map-link:hover,
+.map-link:focus {
+  color: #ffffff;
+  background: rgba(135,206,235,0.12);
+  outline: none;
+}
+</style>
 
+<main class="page-shell category-page">
+
+  <div class="signal-mark" aria-hidden="true">
+    <div class="fm-mini">FM</div>
+    <div class="digital-mini">
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg d on"></div><div class="seg e on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div><div class="seg f on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg c on"></div><div class="seg d on"></div><div class="seg e on"></div><div class="seg f on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg c on"></div><div class="seg d on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div></div>
     </div>
   </div>
+  <header class="page-heading">
+    <h1>短篇</h1>
+    <p>捕捉到的频道记录</p>
+  </header>
+
   
   
+    <section class="post-list" aria-label="短篇文章列表">
+      
+        <a class="post-item soft-panel" href="/2026/05/02/%E4%BA%A4%E9%94%99/">
+          <span class="post-title">交错</span>
+          <span class="post-meta">2026.05.02</span>
+        </a>
+      
+    </section>
   
+
+  <a class="map-link" href="/map/">返回频道地图</a>
+</main>
 
 </div>
   </main>

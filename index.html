@@ -1,5 +1,111 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<style>
+/* =========================
+   🚨 全局清理与统一风格
+   ========================= */
+/* 1. 强制隐藏主题默认的头部、导航和页脚 */
+.header,
+.site-nav,
+.site-header,
+.navbar,
+.menu,
+.site-brand-container {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 2. 全局背景和基础字体 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6) fixed;
+  color: #9fbcd3;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+/* 3. 统一分类页和文章页的列表样式（去除默认卡片感） */
+.posts-collapse,
+.post-block {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.post-title a {
+  color: #87CEEB !important;
+}
+.post-title a:hover {
+  color: #ffffff !important;
+}
+
+/* 4. 文章正文排版（首行缩进） */
+.post-body p {
+  text-indent: 2em;
+  line-height: 1.8;
+  margin-bottom: 0.8em;
+}
+
+/* 5. 隐藏可能出现的侧边栏 */
+.sidebar {
+  display: none !important;
+}
+/* =========================
+   分类页/文章列表统一美化
+   ========================= */
+.category-all-page,
+.posts-collapse {
+  max-width: 700px;
+  margin: 0 auto !important;
+  float: none !important;
+  background: transparent !important;
+}
+
+.category-list-title,
+.category-all-title {
+  text-align: center;
+  font-size: 24px;
+  color: #87CEEB !important;
+  margin: 60px 0 40px;
+}
+
+.category-list,
+.category-all-page ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list-item,
+.category-all-page li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(135,206,235,0.08);
+}
+
+.category-list-link,
+.category-all-page a {
+  color: #87CEEB !important;
+  text-decoration: none !important;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.category-list-link:hover,
+.category-all-page a:hover {
+  color: #ffffff !important;
+}
+
+.category-list-count {
+  color: rgba(135,206,235,0.4);
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer {
+  display: none !important;
+}
+</style>
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -114,49 +220,102 @@
     <div class="main-inner ">
 
 
-<!-- 🌙 HERO -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&display=swap');
+
+html, body {
+  margin: 0; padding: 0;
+  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6) fixed;
+  color: #9fbcd3;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+  overflow: hidden;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer, .sidebar {
+  display: none !important;
+}
+
+.hero {
+  height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative;
+}
+
+.moon {
+  position: absolute; width: 160px; height: 160px;
+  top: 30%; left: 50%; transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(135,206,235,0.25), transparent);
+  filter: blur(10px);
+}
+
+.fm {
+  font-size: 54px; font-weight: 400; letter-spacing: 3px;
+  font-family: 'Nunito', sans-serif; color: #a6e3ff;
+  text-shadow: 0 0 10px rgba(135,206,235,0.5), 0 0 25px rgba(39,117,182,0.3);
+}
+
+.title-line { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 10px; }
+.digital { display: flex; gap: 10px; }
+.seg-char { position: relative; width: 36px; height: 64px; }
+.seg { position: absolute; background: rgba(120,200,255,0.08); transition: 0.2s; }
+.seg.on { background: #87ceeb; box-shadow: 0 0 8px rgba(135,206,235,0.8); }
+.seg.a { top: 0; left: 8px; width: 20px; height: 4px; }
+.seg.b { top: 6px; right: 0; width: 4px; height: 22px; }
+.seg.c { bottom: 6px; right: 0; width: 4px; height: 22px; }
+.seg.d { bottom: 0; left: 8px; width: 20px; height: 4px; }
+.seg.e { bottom: 6px; left: 0; width: 4px; height: 22px; }
+.seg.f { top: 6px; left: 0; width: 4px; height: 22px; }
+.seg.g { top: 30px; left: 8px; width: 20px; height: 4px; }
+
+.hero p {
+  font-size: 18px; font-family: 'Long Cang', 'ZCOOL XiaoWei', cursive !important;
+  color: rgba(180,220,240,0.9); letter-spacing: 1.5px;
+}
+
+.hero-enter,
+.hero-enter:hover,
+.hero-enter:focus,
+.hero-enter:visited {
+  display: inline-block;
+  margin-top: 24px; font-size: 16px; color: #87CEEB;
+  cursor: pointer; text-shadow: 0 0 10px rgba(135,206,235,0.6);
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  outline: none;
+}
+
+.hero-enter:hover,
+.hero-enter:focus { color: #ffffff; }
+.hero-enter::before,
+.hero-enter::after { display: none !important; }
+
+@media (max-width: 640px) {
+  .title-line { gap: 12px; transform: scale(0.82); }
+}
+</style>
+
 <section class="hero">
-
   <div class="moon"></div>
-
-  <div class="hero-inner">
-
-    <h1 class="hero-title">FM214831</h1>
-
-    <p class="hero-desc">
-      海边月亮 / 全糖可乐 / 一些真挚的关系
-    </p>
-
-    <div class="hero-enter" onclick="enterWorld()">
-      ENTER
+  <div>
+    <div class="title-line">
+      <div class="fm">FM</div>
+      <div class="digital">
+        <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg d on"></div><div class="seg e on"></div><div class="seg g on"></div></div>
+        <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div></div>
+        <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div><div class="seg f on"></div><div class="seg g on"></div></div>
+        <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg c on"></div><div class="seg d on"></div><div class="seg e on"></div><div class="seg f on"></div><div class="seg g on"></div></div>
+        <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg c on"></div><div class="seg d on"></div><div class="seg g on"></div></div>
+        <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div></div>
+      </div>
     </div>
-
+    <p>全糖可乐 / 海边月亮 / 一些真挚的关系</p>
+    <a class="hero-enter" href="/map/">ENTER</a>
   </div>
-
-</section>
-
-<!-- 🌊 内容区 -->
-<section id="world" class="world">
-
-  <!-- 分类入口 -->
-  <div class="chapter-map">
-    <a href="/categories/短篇/">短篇</a>
-    <a href="/categories/长篇/">长篇</a>
-    <a href="/categories/片段/">片段</a>
-    <a href="/categories/同人图/">图像</a>
-  </div>
-
-  <!-- 文章列表（关键！不能删） -->
-  <div class="post-list">
-    
-      <article>
-        <h2>
-          <a href="/"></a>
-        </h2>
-      </article>
-    
-  </div>
-
 </section>
 
 

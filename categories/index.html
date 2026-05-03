@@ -1,5 +1,111 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<style>
+/* =========================
+   🚨 全局清理与统一风格
+   ========================= */
+/* 1. 强制隐藏主题默认的头部、导航和页脚 */
+.header,
+.site-nav,
+.site-header,
+.navbar,
+.menu,
+.site-brand-container {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 2. 全局背景和基础字体 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6) fixed;
+  color: #9fbcd3;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+/* 3. 统一分类页和文章页的列表样式（去除默认卡片感） */
+.posts-collapse,
+.post-block {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.post-title a {
+  color: #87CEEB !important;
+}
+.post-title a:hover {
+  color: #ffffff !important;
+}
+
+/* 4. 文章正文排版（首行缩进） */
+.post-body p {
+  text-indent: 2em;
+  line-height: 1.8;
+  margin-bottom: 0.8em;
+}
+
+/* 5. 隐藏可能出现的侧边栏 */
+.sidebar {
+  display: none !important;
+}
+/* =========================
+   分类页/文章列表统一美化
+   ========================= */
+.category-all-page,
+.posts-collapse {
+  max-width: 700px;
+  margin: 0 auto !important;
+  float: none !important;
+  background: transparent !important;
+}
+
+.category-list-title,
+.category-all-title {
+  text-align: center;
+  font-size: 24px;
+  color: #87CEEB !important;
+  margin: 60px 0 40px;
+}
+
+.category-list,
+.category-all-page ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list-item,
+.category-all-page li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(135,206,235,0.08);
+}
+
+.category-list-link,
+.category-all-page a {
+  color: #87CEEB !important;
+  text-decoration: none !important;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.category-list-link:hover,
+.category-all-page a:hover {
+  color: #ffffff !important;
+}
+
+.category-list-count {
+  color: rgba(135,206,235,0.4);
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer {
+  display: none !important;
+}
+</style>
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -140,9 +246,14 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
 </div>
@@ -178,10 +289,10 @@
       
       <div class="post-body"><div class="category-all-page">
   <div class="category-all-title">
-    暂无分类
+    目前共计 1 个分类
   </div>
   <div class="category-all">
-    
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%AD%E7%AF%87/">短篇</a><span class="category-list-count">1</span></li></ul>
   </div>
 </div>
 

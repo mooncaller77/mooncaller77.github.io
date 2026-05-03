@@ -1,5 +1,111 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<style>
+/* =========================
+   🚨 全局清理与统一风格
+   ========================= */
+/* 1. 强制隐藏主题默认的头部、导航和页脚 */
+.header,
+.site-nav,
+.site-header,
+.navbar,
+.menu,
+.site-brand-container {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 2. 全局背景和基础字体 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6) fixed;
+  color: #9fbcd3;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+/* 3. 统一分类页和文章页的列表样式（去除默认卡片感） */
+.posts-collapse,
+.post-block {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.post-title a {
+  color: #87CEEB !important;
+}
+.post-title a:hover {
+  color: #ffffff !important;
+}
+
+/* 4. 文章正文排版（首行缩进） */
+.post-body p {
+  text-indent: 2em;
+  line-height: 1.8;
+  margin-bottom: 0.8em;
+}
+
+/* 5. 隐藏可能出现的侧边栏 */
+.sidebar {
+  display: none !important;
+}
+/* =========================
+   分类页/文章列表统一美化
+   ========================= */
+.category-all-page,
+.posts-collapse {
+  max-width: 700px;
+  margin: 0 auto !important;
+  float: none !important;
+  background: transparent !important;
+}
+
+.category-list-title,
+.category-all-title {
+  text-align: center;
+  font-size: 24px;
+  color: #87CEEB !important;
+  margin: 60px 0 40px;
+}
+
+.category-list,
+.category-all-page ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list-item,
+.category-all-page li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(135,206,235,0.08);
+}
+
+.category-list-link,
+.category-all-page a {
+  color: #87CEEB !important;
+  text-decoration: none !important;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.category-list-link:hover,
+.category-all-page a:hover {
+  color: #ffffff !important;
+}
+
+.category-list-count {
+  color: rgba(135,206,235,0.4);
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer {
+  display: none !important;
+}
+</style>
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -25,7 +131,7 @@
 <meta property="og:site_name" content="FM214831">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-30T14:07:08.279Z">
+<meta property="article:modified_time" content="2026-05-03T03:40:46.587Z">
 <meta property="article:author" content="MOONCALLER77">
 <meta property="article:tag" content="同人,小说,海边月亮,全糖可乐">
 <meta name="twitter:card" content="summary">
@@ -37,8 +143,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"https://mooncaller77.github.io/categories/%E5%90%8C%E4%BA%BA%E5%9B%BE.html","path":"categories/同人图.html","title":"同人图"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>同人图 | FM214831
-</title>
+<title>同人图 | FM214831</title>
   
 
 
@@ -112,88 +217,41 @@
 
 </header>
         
+    </div>
+
+    <div class="main-inner ">
+
+<style>
+html, body {
+  margin: 0; padding: 0;
+  min-height: 100%;
+  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6) fixed;
+  color: #9fbcd3;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+.header, .site-nav, .site-header, .navbar, .menu, .site-brand-container,
+.footer, .site-footer, .sidebar { display: none !important; }
+.category-page { max-width: 700px; margin: 0 auto; padding: 80px 20px; }
+.section-header { text-align: center; font-size: 11px; letter-spacing: 6px; opacity: 0.38; color: #87CEEB; margin-bottom: 16px; }
+.category-title { text-align: center; margin: 0 0 40px; font-size: 30px; font-weight: 400; color: #ffffff; }
+.post-item { padding: 18px 0; border-bottom: 1px solid rgba(135,206,235,0.08); }
+.post-item a { color: #87CEEB; text-decoration: none; font-size: 18px; font-weight: 400; }
+.post-item a:hover { color: #ffffff; }
+.placeholder { text-align: center; opacity: 0.45; font-style: italic; padding: 40px; }
+.map-link { display: inline-block; margin-top: 36px; color: rgba(135,206,235,0.7); text-decoration: none; font-size: 13px; }
+.map-link:hover { color: #ffffff; }
+</style>
+
+<main class="category-page">
+  <div class="section-header">FM214831</div>
+  <h1 class="category-title">同人图</h1>
   
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">MOONCALLER77</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">1</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-        </div>
-      </div>
-    </div>
-
-    
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner page posts-expand">
-
-
-    
-    
-    
-    <div class="post-block" lang="zh-CN"><header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">同人图
-</h1>
-
-<div class="post-meta-container">
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body"><div class="category-all-page">
-  <div class="category-all-title">
-    暂无分类
-  </div>
-  <div class="category-all">
-    
-  </div>
-</div>
-
-      </div>
-      
-      
-      
-    </div>
-
-    
-    
-
+  
+  
+    <div class="placeholder">这一段信号暂时还没有抵达。</div>
+  
+  <a class="map-link" href="/map/">返回频道地图</a>
+</main>
 
 </div>
   </main>

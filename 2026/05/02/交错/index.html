@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<style>
+/* =========================
+   🚨 全局清理与统一风格
+   ========================= */
+/* 1. 强制隐藏主题默认的头部、导航和页脚 */
+.header,
+.site-nav,
+.site-header,
+.navbar,
+.menu,
+.site-brand-container {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 2. 全局背景和基础字体 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6) fixed;
+  color: #9fbcd3;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+/* 3. 统一分类页和文章页的列表样式（去除默认卡片感） */
+.posts-collapse,
+.post-block {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.post-title a {
+  color: #87CEEB !important;
+}
+.post-title a:hover {
+  color: #ffffff !important;
+}
+
+/* 4. 文章正文排版（首行缩进） */
+.post-body p {
+  text-indent: 2em;
+  line-height: 1.8;
+  margin-bottom: 0.8em;
+}
+
+/* 5. 隐藏可能出现的侧边栏 */
+.sidebar {
+  display: none !important;
+}
+/* =========================
+   分类页/文章列表统一美化
+   ========================= */
+.category-all-page,
+.posts-collapse {
+  max-width: 700px;
+  margin: 0 auto !important;
+  float: none !important;
+  background: transparent !important;
+}
+
+.category-list-title,
+.category-all-title {
+  text-align: center;
+  font-size: 24px;
+  color: #87CEEB !important;
+  margin: 60px 0 40px;
+}
+
+.category-list,
+.category-all-page ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list-item,
+.category-all-page li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(135,206,235,0.08);
+}
+
+.category-list-link,
+.category-all-page a {
+  color: #87CEEB !important;
+  text-decoration: none !important;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.category-list-link:hover,
+.category-all-page a:hover {
+  color: #ffffff !important;
+}
+
+.category-list-count {
+  color: rgba(135,206,235,0.4);
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer {
+  display: none !important;
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mooncaller77.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="01 深夜的小巷里只有几盏路灯立在那，浅黄色的灯光照亮路边一小片区域。周全才搬来这地方不久，这里路弯弯绕绕总是交错着通往不同地方，他不太熟悉路走得有些慢。刚转弯往前走几步的时候，叫喊声和东西被砸落的异响突然传来。声音并不大，但在安静的夜晚却十分突兀，警察的直觉让他快步朝声音来源跑去。入目便是几人围在小巷尽头，钨丝灯挂在摇摇欲坠的木板上，微弱的光亮让周全看得不太真切。直到走近他才发现是几个年纪不大的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交错">
+<meta property="og:url" content="https://mooncaller77.github.io/2026/05/02/%E4%BA%A4%E9%94%99/index.html">
+<meta property="og:site_name" content="FM214831">
+<meta property="og:description" content="01 深夜的小巷里只有几盏路灯立在那，浅黄色的灯光照亮路边一小片区域。周全才搬来这地方不久，这里路弯弯绕绕总是交错着通往不同地方，他不太熟悉路走得有些慢。刚转弯往前走几步的时候，叫喊声和东西被砸落的异响突然传来。声音并不大，但在安静的夜晚却十分突兀，警察的直觉让他快步朝声音来源跑去。入目便是几人围在小巷尽头，钨丝灯挂在摇摇欲坠的木板上，微弱的光亮让周全看得不太真切。直到走近他才发现是几个年纪不大的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-02T15:30:00.000Z">
+<meta property="article:modified_time" content="2026-05-03T04:13:09.712Z">
+<meta property="article:author" content="MOONCALLER77">
+<meta property="article:tag" content="同人,小说,海边月亮,全糖可乐">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mooncaller77.github.io/2026/05/02/%E4%BA%A4%E9%94%99/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://mooncaller77.github.io/2026/05/02/%E4%BA%A4%E9%94%99/","path":"2026/05/02/交错/","title":"交错"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>交错 | FM214831</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">FM214831</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">微弱信号，不定期广播。<br>内容包含：海边月亮、全糖可乐、以及一些真挚的关系。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-短篇"><a href="/categories/%E7%9F%AD%E7%AF%87/" rel="section"><i class="fa fa-feather-alt fa-fw"></i>短篇</a></li><li class="menu-item menu-item-长篇"><a href="/categories/%E9%95%BF%E7%AF%87/" rel="section"><i class="fa fa-book fa-fw"></i>长篇</a></li><li class="menu-item menu-item-同人图"><a href="/categories/%E5%90%8C%E4%BA%BA%E5%9B%BE/" rel="section"><i class="fa fa-image fa-fw"></i>同人图</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at 50% 18%, rgba(135,206,235,0.16), transparent 24rem), linear-gradient(to bottom, #050d18, #0b1a2a 52%, #2775b6) fixed;
+  color: #dbe9f5;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer, .sidebar,
+.post-footer, .post-meta-container {
+  display: none !important;
+}
+
+a, a:hover, a:focus, a:visited,
+.reader-link, .reader-link:hover, .reader-link:focus, .reader-link:visited,
+.post-title a, .post-title a:hover, .post-title a:focus, .post-title a:visited,
+.post-body a, .post-body a:hover, .post-body a:focus, .post-body a:visited {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+.signal-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 20px;
+  transform-origin: center;
+}
+
+.fm-mini {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: 'Sniglet', "PingFang SC", sans-serif;
+  color: #a6e3ff;
+  text-shadow: 0 0 10px rgba(135,206,235,0.5), 0 0 22px rgba(39,117,182,0.3);
+}
+
+.digital-mini { display: flex; gap: 5px; }
+.seg-char { position: relative; width: 18px; height: 32px; }
+.seg { position: absolute; background: rgba(120,200,255,0.08); }
+.seg.on { background: #87ceeb; box-shadow: 0 0 7px rgba(135,206,235,0.85); }
+.seg.a { top: 0; left: 4px; width: 10px; height: 2px; }
+.seg.b { top: 3px; right: 0; width: 2px; height: 11px; }
+.seg.c { bottom: 3px; right: 0; width: 2px; height: 11px; }
+.seg.d { bottom: 0; left: 4px; width: 10px; height: 2px; }
+.seg.e { bottom: 3px; left: 0; width: 2px; height: 11px; }
+.seg.f { top: 3px; left: 0; width: 2px; height: 11px; }
+.seg.g { top: 15px; left: 4px; width: 10px; height: 2px; }
+
+.post-reader {
+  width: min(760px, calc(100% - 38px));
+  margin: 0 auto;
+  padding: 62px 0 54px;
+  box-sizing: border-box;
+}
+
+.post-reader .post-block {
+  position: relative;
+  margin: 0 !important;
+  padding: 42px clamp(22px, 5vw, 54px) 46px !important;
+  border: 1px solid rgba(135,206,235,0.18) !important;
+  border-radius: 8px;
+  background: rgba(5,13,24,0.2) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.post-reader .post-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 30%, rgba(135,206,235,0.07));
+  opacity: 0.72;
+}
+
+.post-reader .post-content,
+.post-reader .post-header,
+.post-reader .post-body {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+.post-reader .post-header {
+  margin: 0 0 34px !important;
+  text-align: center;
+}
+
+.post-reader .post-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: #f6fcff !important;
+  font-size: clamp(28px, 5vw, 40px) !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 1px;
+  text-shadow: 0 0 14px rgba(135,206,235,0.34);
+}
+
+.post-reader .post-title::before,
+.post-reader .post-title::after {
+  display: none !important;
+}
+
+.post-reader .post-body {
+  color: rgba(225,240,248,0.92) !important;
+  font-size: 16px;
+  line-height: 1.95;
+}
+
+.post-reader .post-body p {
+  margin: 0 0 1.08em;
+  text-indent: 2em;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.post-reader .post-body pre,
+.post-reader .post-body code {
+  max-width: 100%;
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  color: rgba(225,240,248,0.92) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.post-reader .post-body pre {
+  margin: 0 0 1.08em !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+.post-reader .post-body h1,
+.post-reader .post-body h2,
+.post-reader .post-body h3 {
+  color: #d7f4ff;
+  font-weight: 400;
+  text-shadow: 0 0 10px rgba(135,206,235,0.22);
+}
+
+.reader-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.reader-link {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: rgba(198,232,246,0.78) !important;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  background: rgba(5,13,24,0.2);
+  transition: color 0.22s ease, background 0.22s ease;
+}
+
+.reader-link:hover,
+.reader-link:focus {
+  color: #ffffff !important;
+  background: rgba(135,206,235,0.12);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .post-reader { width: min(100% - 28px, 760px); padding-top: 42px; }
+  .signal-mark { transform: scale(0.9); }
+  .post-reader .post-block { padding: 34px 20px 38px !important; }
+  .post-reader .post-body { font-size: 15px; line-height: 1.9; }
+}
+
+</style>
+
+<main class="post-reader">
+
+  <div class="signal-mark" aria-hidden="true">
+    <div class="fm-mini">FM</div>
+    <div class="digital-mini">
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg d on"></div><div class="seg e on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div><div class="seg f on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg c on"></div><div class="seg d on"></div><div class="seg e on"></div><div class="seg f on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg c on"></div><div class="seg d on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div></div>
+    </div>
+  </div>
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mooncaller77.github.io/2026/05/02/%E4%BA%A4%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MOONCALLER77">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FM214831">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="交错 | FM214831">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          交错
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-05-02 23:30:00" itemprop="dateCreated datePublished" datetime="2026-05-02T23:30:00+08:00">2026-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-05-03 12:13:09" itemprop="dateModified" datetime="2026-05-03T12:13:09+08:00">2026-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%9F%AD%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">短篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>01</p>
+<p>深夜的小巷里只有几盏路灯立在那，浅黄色的灯光照亮路边一小片区域。周全才搬来这地方不久，这里路弯弯绕绕总是交错着通往不同地方，他不太熟悉路走得有些慢。刚转弯往前走几步的时候，叫喊声和东西被砸落的异响突然传来。声音并不大，但在安静的夜晚却十分突兀，警察的直觉让他快步朝声音来源跑去。入目便是几人围在小巷尽头，钨丝灯挂在摇摇欲坠的木板上，微弱的光亮让周全看得不太真切。直到走近他才发现是几个年纪不大的混混在围殴一个学生。</p>
+<p>周全猛地冲进去把人扒开，顺手摁住其中一个，“干什么呢！都停手，我是警察！！”</p>
+<p>那几人显然没想到会招惹来警察，被周全一吼，几个小混混先是一愣，你看我我看你，还没等周全掏出警察证件，便都纷纷扔下手里作案工具飞似地跑了，除了被周全压制在墙上的。</p>
+<p>那被围着打的学生一经松开衣领，整个人都瘫坐在地上，满脸血污。</p>
+<p>男生看起来状态着实吓人，周全暗骂一声，他不敢轻易挪动男生，转头准备摸手机的时候才注意到旁边还站着个女生，也是个学生，人看起来有些吓傻了，他急着喊，“愣着干什么，快打电话叫救护车！”</p>
+<p>“还有你，给我老实点！聚众斗殴，等会儿和我回警局。”说着周全又扯了一把企图逃跑的小混混，因为已经下班，他身上没带手铐，只能单手把自己的衬衫外套脱下用以捆住小混混。</p>
+<p>女生被周全喊回神，颤抖着手要打电话的时候，有脚步声由远及近，周全以为是去而复返的小混混，站起身将两人挡在身后，转头朝女生催促道，“你快打电话。”</p>
+<p>路灯下周全隐约看见一个瘦高的男生朝这边跑过来，等近了一看模样，似乎是个高中生。</p>
+<p>现在的小孩都在搞什么啊？这是周全的第一反应。</p>
+<p>那男生走近后看到瘫倒在地上的人，一脸难以置信，随后露出悔恨的表情。</p>
+<p>“宋然，宋然！你没事吧！宋然！”他伸手去擦男生脸上的血，染得衣服和手上满是血色。</p>
+<p>“冬哥……”</p>
+<p>女生叫唤一声便不再说话，抠着手机的一双手用力到指节泛白。</p>
+<p>救护车没多久就来了，女生好像此刻才反应过来发生了什么，流着眼泪一言不发，跟在担架后一起上了救护车。被叫做冬哥的男生上车前停下脚步，转身似乎在找谁，他看到周全站在一边，小跑过去道了声谢谢，而后才快步跨上救护车一起离开。</p>
+<p>周全本高兴于今天没有加个通宵，谁能想到最后溜一圈又回来了。</p>
+<p>到了警局的时候，周全仔细打量一番眼前的小混混，才发现人年纪也不大，看起来还未成年的样子。从这小混混口中，周全大致捋清了来龙去脉。</p>
+<p>这帮小混混看一个叫陈麦冬的学生不顺眼很久，也就是那个最后赶来的孩子，但人根本不理他们。他们见宋怡和陈麦冬似乎关系不错，便去校门口堵宋怡，让她给陈麦冬打电话把人叫出来，但不知怎么来的却是宋怡的哥哥宋然。他们这帮人根本不把宋然放在眼里，见来的不是陈麦冬，压根不准备轻易放宋怡离开。宋然一个好好学生，根本不会打架，但是为了自己妹妹只能动起了手，这才有了围殴的场面。</p>
+<p>周全轻轻叹了口气，一时也不知道说什么好。</p>
+<p>第二天周全休假去医院，在赵家村的行动过后，虽然送医及时被抢救回来，但是子弹位置刁钻，他又仍在恢复期，需要定期去复查才行。不过好在来了这边之后，工作强度并不高，休息得还算规律，医生告诉他没什么大碍，只是还需要再好好养养。</p>
+<p>说来也巧，周全从诊室出来就看见了站在走廊上的宋怡，那女生看到他后眼睛一亮，笑着朝他打招呼，“警察哥哥，你怎么在这？”也没等周全开口，宋怡又兴冲冲道，“昨天多亏你出手制止，医生说我哥虽然看起来吓人，但不是很严重，有些脑震荡，还有手骨折了。你……要去看看我哥吗？”</p>
+<p>周全跟着宋怡走到病房门口时候，陈麦冬正坐在一边的椅子上，他连个眼皮都没抬，兀自手里捏着瓶水不知道在想什么。宋然这时候已经醒了，脸上贴着几块纱布，扯着半边嘴角在和陈麦冬说话。</p>
+<p>“冬哥，他们不让宋怡离开我才动手的。”</p>
+<p>“我对自己能力有数，你看我这不是也没事嘛。”</p>
+<p>陈麦冬冷着脸一言不发，受伤的宋然反倒絮絮叨叨不停像是在安慰陈麦冬。</p>
+<p>毕竟不认识，周全看着这俩小孩没事样，便转身准备离开，走之前宋怡硬是问他要了电话号码和名字，说以后好感谢他。</p>
+<p>02</p>
+<p>周全发现最近似乎只要早些离开办公室，便总能在路上遇到些事。他握着手里沾满碘伏消毒液的棉签，轻轻地朝陈麦冬脸上的伤口擦去。</p>
+<p>陈麦冬和宋然今天刚出校门口没多久，就又遇到了上次那帮小混混。</p>
+<p>“陈麦冬，你是真垃圾，上次竟然把警察找来了，害得我兄弟现在还在局子里蹲着。今天我不给你点颜色瞧瞧，你是真不知道我们厉害。”</p>
+<p>那几人气势汹汹，陈麦冬见形势不妙，往后退一步，凑近宋然，小声道，“你等会儿直接跑，不用管我，我有办法。”</p>
+<p>宋然还想说什么，但他了解自己的能力，留着只会给陈麦冬添麻烦，只能乖乖点头。</p>
+<p>陈麦冬狠戾地扫了一眼那帮小混混，甩下包往对方身上狠狠一砸，喊道，“跑！”</p>
+<p>看宋然跑走，陈麦冬倒是不慌了，他在医院的时候就有了要找这帮人好好聊聊的打算，本来只是想让他们规规矩矩地道歉，但现在既然以这样的方式送上门，他自然也要好好回敬一番。</p>
+<p>宋然刚出院没多久，体力本就不好，吊着根骨折的手臂跑了几条街就气喘吁吁停了下来。</p>
+<p>周全恰从旁边路过，宋怡那天带着周全去他病房的时候，他是有看到这个站在门口没有进来的人。事后宋怡有告诉他是这个叫周全的警察救了他们，所以他一眼瞥到周全这张脸的时候，立马就扯住人家胳膊，上气不接下气，“周警官！麦冬他，麦冬他被那帮小混混，寻仇了！就在学校旁边便利店后的那条路，你快去救救他！”</p>
+<p>周全跑得很快，但赶到的时候，陈麦冬已经打趴了两个，还剩一个倒在后面地上，陈麦冬拎起被甩在一边的书包拍拍灰尘准备离开，但那个人转眼不知道从哪里拿了根木棍就朝陈麦冬冲过去，木棍上钉着好几根黑色长钉，肉眼可见尖头带着锈迹。</p>
+<p>“当心！”</p>
+<p>周全来不及跑过去，只能出声提醒。那小混混动作一滞，倒是给了陈麦冬躲闪的时间，只是还是有根钉子刮过陈麦冬的侧脸留下一道血迹。</p>
+<p>周全这回身上带着手铐，把几个小混混全都打包拎回警局，关照自己的同事接手这几个小混混后，周全先给陈麦冬做了笔录，结束后叮嘱道，“陈麦冬，下次遇到这种事千万别逞能，有事直接找警察。”</p>
+<p>陈麦冬有些倔强地转过头将目光落在一边的地上。</p>
+<p>“算了，你们这个年纪就是有些叛逆，先去处理一下伤口。”</p>
+<p>陈麦冬这回终于将脑袋转回来，目光落在周全脸上来回打量，“你看起来也没比我大几岁，不要用这种教育人的口气说我。”开口就有些夹枪带炮的，不过周全倒也不在意，反而有些脸皮厚地回道，“夸我年轻啊，谢谢了。走吧！坐在这可不管饭吃，带你去医院检查。”</p>
+<p>陈麦冬有些不乐意，“不用了。”</p>
+<p>“去医院定伤情是解决纠纷的必要环节，走吧陈麦冬同学，再不处理，你这伤口要是感染就完了。”</p>
+<p>身上多处擦伤瘀伤，左侧脸部被生锈铁钉划伤长3cm，还好伤口不深不用缝针，打了破伤风，上完药，周全拿着医生开的药和陈麦冬站在医院门口看着外面突如其来的暴雨面面相觑。</p>
+<p>天已经黑了，暴雨给黑夜蒙上一层雾，陈麦冬率先回过神，掏出手机想要看时间，却发现早就没电关机了。他看起来有些纠结，最后干巴巴地朝周全喊了一声，“喂，有没有手机。”</p>
+<p>“小同学，我有名字，叫周全。”</p>
+<p>“嗯。”</p>
+<p>“真是的……”周全低头轻笑一声，从裤子口袋里摸出手机，“给你。”</p>
+<p>时间已近晚上七点，陈麦冬迅速拨通家里电话，响了好一会儿对面才接起。</p>
+<p>“奶奶，是我，麦冬。”</p>
+<p>“没什么事，和宋然他们出去玩，手机没电了。”</p>
+<p>“嗯…这几天我住宋然家，我知道，不添麻烦，宋然也乐意得很。”</p>
+<p>“好我知道了，奶奶你早点休息，挂了，拜拜。”</p>
+<p>陈麦冬挂了电话犹豫片刻，又给宋然拨了电话，“喂，宋然，我和奶奶说去你家住几天。”</p>
+<p>“我不来，奶奶要是问你，你别说漏嘴。”</p>
+<p>“不用管我，我自己想办法。”</p>
+<p>“不去，行了，挂了。”</p>
+<p>陈麦冬这才将手机还给周全。</p>
+<p>周全站在旁边都有听到陈麦冬说的话，雨势逐渐变小，细密的雨丝轻轻掉落进台阶前的小水坑中。周全抬手准备接过手机，准备将装满药的塑料袋给陈麦冬，对方接过的时候，他有些犹豫道，“陈麦冬……你要不要去我那里住几天过渡一下。”</p>
+<p>说完两人皆是一愣，周全有些慌乱地把手机塞回口袋，他都想不明白自己怎么突然会问出这句话。</p>
+<p>身边站着的人沉默好一会儿，“周全……”</p>
+<p>周全转头第一眼看到的就是陈麦冬的双眼，很清澈漂亮的一双眼睛，紧紧盯着自己，那双眼里带着一些探究的意味，“你们警察对受害人都是这样要带回家收留的吗？”</p>
+<p>“你小子！”周全真是要被气笑了，这小孩还不领情？“我那是……”</p>
+<p>还没等周全说完话，陈麦冬便打断道，“谢谢你，周全，那麻烦你了。”陈麦冬从周全手里拿过药，先一步跨进雨里。周全这才注意到这小孩在偷笑。</p>
+<p>周全家不大，一室一厅，“你还是小孩，你就睡卧室，我睡客厅，沙发可以拉出来当床用。”像是看透了陈麦冬的想法一般，“不要有负担，我要真只能睡地板，也不会让你住。”</p>
+<p>“衣服什么的我这有没穿过的你将就一下，洗漱用品浴室柜子里有新的你翻一翻，淋了雨你先去洗澡吧，我点个外卖等会儿一起吃。”</p>
+<p>陈麦冬就这样在周全家短暂地住下了。</p>
+<p>其实和以前比起来，这次并不是伤最严重的。</p>
+<p>在学校里，因为同学嘲笑他没有父母管教而反击，老师打电话给他爸妈，他焦急地期待会不会是自己母亲来，最后也不过是奶奶来听老师的批评教育。</p>
+<p>这样几次之后，他知道这招不管用，所以渐渐地也不再搞惹是生非这一套，这次是意外。他也不想让上了年纪的奶奶再为他这些烂事糟心。本来最坏打算就是在外面不需要身份证的小旅馆住几天，只是没想到这个警察会把自己带回家，这种感觉很……微妙。</p>
+<p>他身上也有伤口，只能匆匆擦洗一下，出来的时候周全已经换上一身居家服，正在房间里收拾东西，白色卫衣显得整个人气质柔软很多。</p>
+<p>外卖都是些清淡的食物，陈麦冬在吃这回事上不是很讲究，奶奶做的菜一直都是味道一般，能吃就行。</p>
+<p>两个人吃完整理干净之后，周全拉着陈麦冬说要给他上药，陈麦冬又别扭上了，但毕竟还只是个高中生，被周全一瞪眼一扯又乖乖坐在沙发上不动弹了。</p>
+<p>和一个刚认识的人，还是警察相处，陈麦冬觉得有些尴尬，眼睛一时无处安放，转了一圈后开始盯着周全看。薄薄的内双，又黑又亮的眼睛，正全神贯注盯着他的脸给他上药，因为过于专注，甚至紧抿起了嘴唇，看着有些可爱……</p>
+<p>周全动作很轻，棉签扫过他的脸颊，轻柔的，像羽毛拂过一样，带起一阵痒意，陈麦冬忽然很想要伸手去碰一下周全的脸。</p>
+<p>“诶！诶！”周全两根手指夹着棉签，拍拍陈麦冬抬起的胳膊，“别乱动！”</p>
+<p>陈麦冬这才意识到自己看着人家看出了神，眼睛不自在地往别的地方看，卫衣的领子大，周全往下俯身的时候漏出了点胸口处白皙的皮肤，陈麦冬也不知怎么耳朵一热，搭在腿上的手不自觉抓着裤边。</p>
+<p>“行了，搞定！身上的伤，你把衣服脱了，我给你涂。”</p>
+<p>“不用了，我自己来。”</p>
+<p>“你怎么自己来？我看你后背上好几块擦伤和淤青，你涂得到吗？”</p>
+<p>“我怎么涂不到？我！嘶……”陈麦冬顺势想要伸手去够背后，却不小心扯到伤口引起一阵疼痛。</p>
+<p>“别倔啊，把衣服脱了，我给你擦药。”</p>
+<p>陈麦冬不情不愿地把衣服脱了，坐在椅子上等周全上药，看不到周全的脸，陈麦冬竟然觉得更紧张了。周全下手很轻，陈麦冬只能感觉到药膏上皮肤的凉意。</p>
+<p>“好了，等一段时间再套衣服，你自己收拾一下，该做作业做作业，做完自己睡觉。”</p>
+<p>陈麦冬有些愣神地看着周全转身在桌子上，一个个看着使用说明，然后把药塞进药箱里，有一种……他好像要在周全家里住很久的感觉。</p>
+<p>夜深人静，陈麦冬躺在床上有些睡不着，从周全救他，到他住进周全家，还有周全帮他上药，这和之前住在宋然家的体验完全不一样。</p>
+<p>以前打架受伤的时候，他偶尔会被宋然拉去家里住，他不喜欢和别人挤在一张床上，哪怕是自己好兄弟。他带着伤睡宋然房间的地铺，因为宋然家管得严，他这个在家长心里和坏学生基本划上等号的人也不想给宋然添麻烦，一般都是晚上悄悄地去，白天早起离开。</p>
+<p>这一次他反而鸠占鹊巢，房间的主人给他擦药，他还安稳地躺在了人家卧室的床上，属实新奇。</p>
+<p>他起身悄悄拧开门把手，客厅的窗帘没有拉紧，月光透过缝隙悄悄进来，客厅的空调开得很足，周全翻了个身，又抓紧被子往身上盖，把自己裹得只露了个脑袋，看起来就像是一只毛茸茸的小动物，有些可爱。</p>
+<p>03</p>
+<p>陈麦冬昨天在床上翻来覆去，最后不知道什么时候睡着的，第二天早上闹钟响起的时候整个人都觉得晕晕乎乎，等打开门一看客厅已经拾掇干净，周全出门上班了。</p>
+<p>客厅餐桌上放着早饭和几支药膏，药膏下还压着张纸，“我上早班先走了，早饭要吃，记得擦药，钥匙放在玄关记得拿。”</p>
+<p>陈麦冬捏着纸塞进口袋，手在药膏上犹豫了一会儿，最后只拿了豆浆和包子就出了门。</p>
+<p>周全今天接到任务是去街区走访，一直忙到晚上才结束，当中他就啃了两口饼干垫垫肚子。忙着的时候还好，现在定下心来肚子倒先表达不满起来，咕噜噜直叫。他快步走在回家路上才想起来陈麦冬还住在他家，也不知道这小孩吃过没。</p>
+<p>头一回周全打开家门不是漆黑一片，甚至桌上还摆着饭菜。</p>
+<p>卧室的门没有关，周全看到陈麦冬正在里面做作业。</p>
+<p>“陈麦冬！这一桌子菜你做的？”周全一边喊他一边朝卧室走。</p>
+<p>“嗯。”</p>
+<p>“可以啊你小子，深藏不漏，你吃了吗？还是在等我？”</p>
+<p>陈麦冬看起来不是很想理周全，但肚子咕噜一声出卖了他，周全笑着给他台阶，“走吧走吧，再陪我吃一点。”</p>
+<p>两人坐在饭桌前，周全埋头吃饭，嘴里塞着一大口菜，“虽然吃饭时候说话不好，但是陈麦冬你这手艺真的很不错，好好吃。”说着又往嘴里塞了一筷子菜，两颊鼓鼓的，从陈麦冬的角度看过去就像是一只小仓鼠。</p>
+<p>“想了一下，住在你家还是有些麻烦你的，为了不欠人情，我可以负责给你做饭。”</p>
+<p>周全停下了吃饭的动作，抬眼看到陈麦冬有些别扭地用筷子戳着饭，暖色的顶灯下耳尖泛红。</p>
+<p>周全没有戳穿陈麦冬的害羞，他笑着应道，“那可太好了，我终于不用点外卖了，谢谢你啊小冬。”</p>
+<p>陈麦冬本来视线还游移在地板上，一下子就回神看向周全，对方已经将目光从他身上挪回到那一桌子菜上。</p>
+<p>挂在墙上的时钟秒针声音突然变得无比清晰，滴答，滴答。</p>
+<p>与此同时，还有陈麦冬的心跳声，与其交织在一起。</p>
+<p>陈麦冬住在周全家的第三天，周全的午饭有了着落。他拿着饭盒去热饭的时候，同事甚是惊讶，“小周，你这是谈恋爱了吗？竟然带饭了！”</p>
+<p>周全把饭盒放进微波炉拧上时间，“什么啊？带个饭怎么就谈恋爱了。”</p>
+<p>“你想呀，咱们这行早出晚归的，平时小周你忙起来就吃个饼干面包，不忙的时候也是外卖，肯定不是你自己做的啊，也没听你说阿姨叔叔来看你，那只能是谈恋爱了对象给你的呀！”同事觉得自己分析得有理有据，朝周全扬着下巴。</p>
+<p>“你这脑子都在想什么，还记得前几天那个打架斗殴事件吗？被打的那个学生，为了不让家里人担心，这几天住我家呢。”</p>
+<p>“啊？什么情况啊这是？”同事还想追问，微波炉叮一声提醒周全饭热好了。他从微波炉里拿出饭盒朝同事面前举了举，“行了，不说了，我去吃饭。”</p>
+<p>陈麦冬不愧是少年人，哪怕偶尔偷懒没有按时上药，恢复的速度依然很快，身上的擦伤基本消得七七八八，瘀伤也有所减淡，只有脸上的划伤还结着血痂，偶尔痒痒的让他想要伸手挠。随着身上伤口的愈合，陈麦冬反而心里有些烦躁，他在周全家住了一周多，看他伤好得差不多，周全会不会赶他回家了？他拿捏不准周全的态度，想要晚上吃饭的时候试探一下。</p>
+<p>但是周全这天很晚都没回来，甚至第二天也没个消息，陈麦冬有些担心，放学之后去警局找了周全，被告知周全临时接了任务要去外地出差几天，很紧急，应该是没来得及通知他。</p>
+<p>陈麦冬心里有些不开心，他说不清为什么自己会不开心，只觉得这不开心在他看来是毫无道理的，最终他将这归结于没睡好。</p>
+<p>周全不在家，陈麦冬也不准备再住下去，他想要发短信给周全，发现在人家里住了这么几天，却连对方手机号都没有。</p>
+<p>他低头嗤笑一声，而后拜托周全的同事等周全回来转告他，自己伤好就先回去了。</p>
+<p>犹豫再三，陈麦冬还是回到周全家，在桌上压了张纸，“这几天打扰了，我先回家了。”末尾还附上了自己的手机号。</p>
+<p>周全的同事没有告诉陈麦冬周全什么时候会回来，陈麦冬开始几天还会时不时检查自己的手机，生怕漏了周全电话或者短信。甚至放学早的话，陈麦冬还会特意绕道警局，在警局对面的小超市站一会儿再离开。</p>
+<p>他感觉自己有些莫名其妙，但他执着地认为只是因为没有给周全好好道谢和告别而导致。</p>
+<p>这天宋怡突然来找陈麦冬，“冬哥，你身体好了？”</p>
+<p>“嗯。”</p>
+<p>“你这几天都住在周警官家里吗？”宋怡试探着问道，见陈麦冬没反应多少有些无趣，“冬哥，其实经过上次的事，我已经想清楚了，我决定不喜欢你了。”</p>
+<p>“嗯。”陈麦冬是能感觉到宋怡喜欢自己的，只是他并不喜欢对方，所以有意的疏远对彼此都好。</p>
+<p>“冬哥，你知道吗，那天我哥真的多亏周警官，你这次也是周警官帮的忙，他真的很好。”宋怡忽然欲言又止，语气有些不自然，“所以我其实想问问周警官有什么喜欢的东西吗？我想……我想表示一下谢意。”</p>
+<p>本就心里烦，宋怡又在他旁边一个劲地提周全，陈麦冬把笔往桌上一摔，有些控制不住自己的情绪，“周警官，周警官，你自己去问他啊，我又不是他朋友。”</p>
+<p>说完连书本卷着笔一把塞进书包里，头也不回地走了，留宋怡一个人满头问号，“我，我也没说什么啊……”</p>
+<p>两天后陈麦冬接到了周全的电话，没有备注，是个陌生电话，陈麦冬本不想接，但他心里还在赌会不会是周全打来的，所以当电话铃响到第五次的时候他接起来了。</p>
+<p>四周很安静，他能听到手机传来轻浅的呼吸声，“小冬，你伤都好了吗？”</p>
+<p>“周全。”</p>
+<p>“很抱歉临时接了个任务没有来得及告诉你，让你担心了吗？”</p>
+<p>“我担心什么，我和你什么关系呀，又不是你的朋友，你没义务告知我。”</p>
+<p>“小冬…”</p>
+<p>“行了周全，谢谢你收留我这几天，没别的要说我就挂了。”</p>
+<p>好不容易有些缓和的氛围因为周全的任务又回到了最开始的状态，周全有些苦恼，但他确实也没什么立场，斟酌几秒最后也只说出一句，“小冬，以后有事找我，不要自己乱来。”</p>
+<p>陈麦冬没有回他，选择直接挂断了电话。想要把通话记录删除连着号码一起拉进黑名单，但手在键盘上犹豫半天，最后还是选择将号码存进了通讯录，备注上了周全的名字。</p>
+<p>04</p>
+<p>这天之后，两个人就没了什么联系。陈麦冬过着普通高三生的生活，周全也忙碌在警局的工作中。</p>
+<p>宋怡又在陈麦冬和宋然玩在一起的时候，在陈麦冬面前提起周全，被呛了几句之后便有所收敛。宋怡私下悄悄对着自己哥哥提过，觉得陈麦冬不喜欢周全。宋然对此也有所感知，就他所了解的陈麦冬，虽然对外看起来不好惹冷冰冰，但很仗义，像周全这样对他们屡次帮助的人，陈麦冬不应该是现在这样的态度。但好兄弟不说，他也不会过多问。</p>
+<p>再次见面的那个晚上，陈麦冬在家里做饭，陈奶奶出去找自己的闺蜜玩。临近饭点，陈奶奶都没回来，陈麦冬打了几个电话都没人接听。他有些担忧，穿好外套准备出门的时候就听到了自家奶奶的声音，中气十足，“小周啊！谢谢你了呀。”</p>
+<p>陈麦冬立马停住往外迈的脚步，就看到奶奶站在门口，拉着门外站住的周全，“小周，进来吃个饭吧。”</p>
+<p>“奶奶，不用了。”</p>
+<p>“怎么不用了，这都几点了，你肯定没吃饭，今天有口福，我们家麦冬做饭，他做的可好吃了。”</p>
+<p>陈奶奶拉着周全不松手，周全也不好推拒，抬眼就看到陈麦冬冷漠地盯着自己，“奶奶，人家警察忙得很，再说我也没做够三人吃的饭。”</p>
+<p>“你小子净胡说，你炖的那一锅鸡就够我们吃好几顿的了，我出门前特地看了。”</p>
+<p>被拆穿了陈麦冬也不尴尬，“那您就看人周警官要不要进来吃了。”</p>
+<p>周全本是想拒绝，但一看是陈麦冬在，他头脑一热竟答应了，等陈麦冬在厨房盛最后一道菜的时候，周全走进来，“小冬，有什么我能帮忙的吗？”样子看着怪拘谨。</p>
+<p>“周全，你还真留下来吃饭？”</p>
+<p>“奶奶盛情难却，我也不好扫了她兴，反正我也已经下班了。”</p>
+<p>陈麦冬沉默了几秒不知在想什么，“那边柜子里碗筷帮忙拿一下，出去吃饭吧。”</p>
+<p>这一顿饭吃得氛围有些怪，陈麦冬一言不发，只低头吃饭；陈奶奶则热络地问周全个人情况，从住哪里有没有对象到最后要不要给他介绍对象。</p>
+<p>周全笑着附和，最后倒是陈麦冬先受不了，“奶奶，别问了，让不让好好吃饭啊。”</p>
+<p>“诶？你这小子！”</p>
+<p>饭后周全准备离开的时候找了陈麦冬，“小冬，你最近还好吗？还会有人找你麻烦吗？”</p>
+<p>“周全，你不觉得自己管很多吗？我们是什么关系？你圣母心泛滥了吧？”陈麦冬出言嘲讽周全，转身准备离开时顿住，“我也没那么无聊一天到晚和人闹矛盾。”</p>
+<p>周全被他顶得楞在原地，一下子没反应过来，他本来觉得陈麦冬不和自己联系是因为没遇上麻烦事，但这眼下看来，分明是在闹脾气了。他有些摸不着头脑，自己哪里惹人不高兴了。</p>
+<p>但很快角色就对掉，看着嘴角带伤的陈麦冬站在自己面前，周全都要气笑了，“是谁前几天和我说不会和别人闹矛盾。”</p>
+<p>陈麦冬扭头不肯说话，他其实也不想，但是那几个人应该是以前周全抓住教育过，他路过就听到那几个人在商量要把周全弄了打一顿，听起来甚至像是想要周全缺胳膊少腿。他一下子就失了理智，和人起了冲突，还好路过的人报警将他们扯开，不然还真不知道会是什么后果。</p>
+<p>“陈麦冬，你真不说吗？对方都被你打骨折了，真追究起来，你到时候留了案底不好看，到底发生什么了。”</p>
+<p>这边周全还在苦口婆心希望陈麦冬把事情缘由告诉自己，结果周全同事走过来，“小周，那几个人选择和解，没追究什么。”</p>
+<p>“行，辛苦了。”周全叹口气，瞥了眼手上血迹干涸的陈麦冬，“拿上东西，等会和我回去。我会给奶奶打电话说的，不准偷偷溜走！”</p>
+<p>陈麦冬站在原地抠手指，他想走，但他怕周全生气，这段时间没有联系，他终于把堵在心口的线团捋清楚，那线拴在自己心脏上，而绕过错综复杂的感情后，另一头缠在周全身上。</p>
+<p>他喜欢周全。</p>
+<p>喜欢总是莫名其妙的，没来由的。他原以为是周全家里暖黄色灯光投下的错觉，因为那里太温暖，所以周全出任务离开，他便选择离开，离开那片温暖制造出的幻象。</p>
+<p>但离开那束光这么久，每每想到周全时，却依然心跳加快，会因为他不找自己而 焦躁，会在宋怡要了解周全而不爽，周全手里捏着那根纤细到脆弱的绳子，哪怕周全没有牵动分毫，但只要那一头连着周全，也总会因为别的风吹草动而扰乱他的思绪。</p>
+<p>他为什么喜欢周全，说不上来，不都说少年人的喜欢没来由，陈麦冬在这件事上不愿意想太多，毕竟他喜欢周全也不是要周全也喜欢自己，他能想象到这段暗恋终将会无疾而终。</p>
+<p>在警局的白炽灯下，一切都那么冷硬，陈麦冬悄悄转头看远处还在交代事情的周全，有些出神地想着自己这始终被人抛弃在暗室里的人，又要再次接触到阳光了吗？以至于周全走近的时候，他还在发呆。</p>
+<p>“想什么呢，走了，跟我回家。”</p>
+<p>回家。</p>
+<p>陈麦冬在嘴里反复咀嚼这两个字，夜色下，他低头浅浅地笑了。</p>
+<p>笑容扯到嘴角的伤口，痛感让他咬紧后槽牙，“还笑！怎么笑得出来啊你陈麦冬，痛死你算了！”</p>
+<p>边说边用手里沾了药水的棉签狠狠戳了一下陈麦冬伤口，“你说说你怎么每次来我这，都浑身是伤的。”</p>
+<p>陈麦冬痛得呲牙咧嘴，有些心虚，“那不是不受伤，你也不会带我回你家吗……”</p>
+<p>行，周全又被一句话堵得语塞，他真是拿陈麦冬没办法。上完药把所有东西收拾完，陈麦冬依然坐在沙发上没动，低头看着自己擦了药水的手不知道在想什么。</p>
+<p>“小冬，你为什么生气？”</p>
+<p>“什么？”</p>
+<p>周全不是不肯花时间思考陈麦冬为什么生气，而是觉得这样来的更直接，有问题就该直接了当地指出。</p>
+<p>然而陈麦冬对于这个问题却给不了明确的答案，他生气了吗？大概是有的吧。为什么生气了？因为周全让他知道，自己之于对方只是个被救助的可怜小狗？周全的态度让他觉得，谁都可以被带回周全的领地，只要是只受伤的小狗。在他以为是被特殊对待而为此心动的时候，周全的行为又好像是在告诉他，一切不过是同情心泛滥。他能开口告诉周全这些吗？显然不能，说了也许周全直接就让他滚出去，他又一次登堂入室，但他不敢轻易袒露，他承认自己在这方面是个懦弱的人。</p>
+<p>周全见陈麦冬沉默良久，看出来他不想回答，只得又转头问道：“哎，你不想说就算了。那你刚刚为什么打架？”</p>
+<p>意料之外，陈麦冬竟然告诉了周全刚刚发生的事，周全拧着眉毛听完，知道陈麦冬是为了他，但是他的思想里打人是不应该的，可他也不想做一个扫兴只会教育别人的人，斟酌片刻，“小冬，下次不要这么冲动，你可以告诉我，我可以和你一起想办法解决，不要轻易让自己受伤，好吗？”</p>
+<p>“你能试着信任我吗？”</p>
+<p>在对视中，陈麦冬看到周全眼眸里全是自己的身影，满满当当，在那双漆黑又水亮，盈满担忧的眸子里，陈麦冬感到心脏上那根细绳又开始拉扯，在周全眨眼的瞬间，在周全抿嘴的时候，在周全关心自己的这一刻，它开始晃动，又好似在收紧，有些疼痛，却也让他感到心动。</p>
+<p>陈麦冬又在周全家住下了，伤口愈合的速度因为陈麦冬不好好上药而缓慢。但伤口恢复的未知性让每一天都有些胆战心惊，陈麦冬害怕哪一天醒来，淤青减淡，伤口掉痂，周全就会把他放回去，让他找不到理由上前，除非再次把自己弄得遍体鳞伤。所以陈麦冬只要不在周全眼皮底下，都任伤口自由发展，在他心里，也许一直好不了也没有关系。</p>
+<p>暗恋是一件幸福却也痛苦的事，特别是当和喜欢的人住在一间屋子里的时候，对对方的渴求疯狂生长，总想要见到他，总想要凑在他旁边，哪怕满桌的作业铺开，陈麦冬依然会在题海中悄悄透过门缝看外面坐着看资料的周全，他克制不住，也不想克制。</p>
+<p>夜深人静，这几天周全加班，回家也晚，基本洗漱完倒头就睡。陈麦冬等了一会儿打开门走到客厅，周全已然睡熟。</p>
+<p>陈麦冬的手指点了一下周全露在外面的手背，有些凉。可能是陈麦冬的触碰太轻而带来了痒意，周全将手缩回被子里。</p>
+<p>眼睛逐渐适应黑暗，周全的脸在眼前变得清晰，陈麦冬抬手沿着脸侧一点点虚空描绘，最后悬在周全的嘴唇之上。</p>
+<p>他很想摸一下，看是否也如周全给人的感觉一样，那么柔软。轻轻地，他好像感觉自己碰到了，便心虚地收回手。拇指与食指相碰，轻柔的摩挲，像是在回味周全嘴唇的触感，可是太轻了，轻到他好像碰完就忘记是什么感觉了。</p>
+<p>周全没有要醒的迹象，但陈麦冬也不准备进一步做出出格的举动，虽然错过这次可能永远没有机会可以得到周全的亲吻。</p>
+<p>两人可以说话的时间也不过就是晚上餐桌旁，氛围总是有些尴尬，周全开口询问拉近距离，而暗藏心事的陈麦冬总是态度有些冰冷。</p>
+<p>“小冬，你这次伤口恢复得有些慢，身上还有什么不舒服的吗？要不要再去医院看。”</p>
+<p>“不用，大概就是高三比较忙，没休息好所以恢复的比较慢吧。”</p>
+<p>“周全……”陈麦冬犹豫再三，深吸一口气放下筷子盯着坐在对面的人，“你说……我们算什么关系？”</p>
+<p>周全不愿多想，但他也有所察觉，少年殷切的目光里传递的是什么，他这个比他大了好几岁，多了几年阅历的人怎么可能看不出来。但如何回应不伤人心才是他感到有些头大的，他只是一时脑热让小孩来暂住，逐渐关系没那么差，谁曾想到隐在其后的是不可言说的情意。警察和需要被帮助的同学这样的关系说出来实在太过伤人，但再亲密一些他们够得上吗？</p>
+<p>周全想了半天，憋出朋友吧三个字。</p>
+<p>陈麦冬这天也不知是吃错了什么药，铁了心不想让人把这顿饭好好吃完，顺着周全的话，“朋友？周全，我从没觉得我们是朋友。作为警察，你有一定的敏锐度，我不信你不知道我到底心里是什么想法？”</p>
+<p>“我又不是心理医生，我怎么会知道你心里什么想法呀。”周全企图打哈哈蒙混过关，有些心虚地喝了一口果汁。</p>
+<p>“周全，我喜欢…”</p>
+<p>话还没说完就被打断，“陈麦冬，不要说了，你还只是个小孩子。我知道你的家庭情况，你现在只是在我身上找到了缺失的父爱母爱，错把这样的依赖当成了别的喜欢。”</p>
+<p>“我已经成年了周全！我不是小孩子，我分得清自己的感情，我没有蠢到把对父母的渴求转移到别人身上的想法。”</p>
+<p>“我们好好吃饭可以吗，先别说这个了。”</p>
+<p>“那周全…那之后你会给我一个答案吗…”陈麦冬的气焰似乎一下子就灭了，他垂头坐在椅子上不确定的疑问像是在喃喃自语。</p>
+<p>关上房门隔绝一切的时候，陈麦冬开始悔恨，为什么要这样说出口。饭桌上周全询问伤口的语句就像是催命符一样提醒他，好了就该走了。所以他才会这样控制不住自己的，像一只快要被扔掉的狗一样对着周全乱叫。</p>
+<p>都怪周全…</p>
+<p>都怪喜欢上周全却不可抑制的自己…</p>
+<p>任务总是将人杀得猝不及防，却给了周全逃避的借口，不告而别是很低劣的手段，但周全此刻只想做卑劣的人。他不敢面对陈麦冬的炽热真心，也理不清自己对这小孩到底只是单纯的关心，还是参杂了别的感情。</p>
+<p>第二天接到局里下的任务时，周全想也没想便自告奋勇地要去，因为时间紧迫，是临时从他们这里调人，需要当晚就走。</p>
+<p>周全回家收拾东西的时候，陈麦冬还没放学，周全不知道该说什么，他脑子太乱了，最后什么话语也没留就走了。</p>
+<p>陈麦冬也在逃避，他刻意晚回去了几个小时，然而走到楼下仰头看到的就是漆黑一片，他记得今天周全是中班，哪怕是加班这个点也该回来了。他以为周全关灯休息了，然而打开门看到的是空无一人。</p>
+<p>第二天陈麦冬给周全发了消息，打了电话，全都毫无回音。</p>
+<p>第三天陈麦冬去警局找周全，又一次被告知周全被临时调走出任务。</p>
+<p>陈麦冬一下子觉得自己有些可笑，每次都是这样，把他捡回家，然后在他露出肚子示好的时候又把他一个人扔在家里离开。对周全来说自己大概真就是一条街边的流浪狗罢了，心情好照顾一下，心情不好路过不言。</p>
+<p>陈麦冬觉得自己大概是读懂了周全的答案。</p>
+<p>暴雨的夜晚，行动组接到线报说嫌疑人疑似藏在东区闹市区居民楼后的矮篷房区。那里到了晚上人多，还好今晚暴雨，但这也同样降低了他们抓到嫌疑人的概率。</p>
+<p>“往你们那跑了！”</p>
+<p>对讲机里传来队友的喊声，暴雨将眼前的画面切割成无数细密小点，周全看到有个人朝这边跑来，他冲上去狠狠扑住对方，那人却剧烈挣扎，反手给他一肘子。猝不及防之下他被掀翻在地。那人挣扎着从地上爬起来，周全还在吃痛中，但反应很快伸腿去绊倒对方。</p>
+<p>雷声隆隆，暴雨之中，缠斗不停，那人不知从哪掏出一把小刀，往毫无防备的周全腹部一刺又猛烈拔出，带出一片鲜血。</p>
+<p>周全咬牙掰过对方手腕，将人一脚踹翻在地上。周全骑在人身上捏着那人手往地上狠狠砸了好几下，对方终于脱力松手，匕首应声而落。那人用没有被制住的手去捏周全渗血的伤口，周全吃痛松开手，咬牙从后腰的枪套中拔出手枪，对着嫌疑人小腿扣下扳机。</p>
+<p>那人扑倒在地，挣扎着想要起来，其他警员这时纷纷赶来，周全这才松了口气，捂着伤口惨白着脸倒在地上，血与雨水一同流淌。</p>
+<p>陈麦冬在那天之后，便回了自己家，距离高考没多久了，他没有过多的心思再去想周全的种种，但他还记得周全在饭桌上答应自己高考结束要来接他。</p>
+<p>“陈麦冬，你快高考了吧？”</p>
+<p>“嗯。”</p>
+<p>像是斟酌了很久，周全才开口，“高考结束你想出去玩吗？我带你出去玩吧？”</p>
+<p>“真的？”</p>
+<p>周全还是有些顾虑，怕自己不能兑现承诺，“一直有效吧，因为你高考完我不一定会有时间，但是一直有效。”</p>
+<p>“不确定的事就不要提了。”</p>
+<p>“但高考结束我可以去接你。”周全心里笃定这肯定没问题，他看到陈麦冬有些欣喜的眼神不禁露出笑容，“好好发挥。”</p>
+<p>好好发挥，他会来接我。</p>
+<p>周全是个说到做到的人，所以陈麦冬选择忽略先前的不愉快，把这个当成眼前的期望蒙蔽自己。</p>
+<p>他将自己掩埋在试卷下，沉心投入高考前的复习。在考试前一天晚上他拿着手机反复解锁，最终给周全发了一条短信。</p>
+<p>等周全从ICU醒来的时候，已经又过去了几天，他醒来有些恍惚，喉咙痛得很，没有人在病房里，他浑身都无力，转头都觉得费劲。</p>
+<p>没一会儿护士进来发现他醒了，要叫医生来，周全哑着嗓子问她几号了。</p>
+<p>6月10日。</p>
+<p>完了……</p>
+<p>05</p>
+<p>周全，希望你记得我们的约定。</p>
+<p>周全的手机在任务中被砸坏，领导来看他的时候给他拿了部备用手机，他电话卡一插进去就看到这条短信躺在收件箱里，日期就是高考前一天。</p>
+<p>周全心里着急，但他无能为力，他根本没力气从床上爬起来，浑身痛得厉害，还带着氧气罩。就算他想离开，医院的医生护士也不会同意。</p>
+<p>他只想先回个消息，认错，告诉陈麦冬自己不是有意的。然而消息发送失败，他被拉黑了。</p>
+<p>他有些茫然地躺在病床上，满脑子都是陈麦冬，这很不正常。</p>
+<p>其实那个与歹徒搏斗的雨夜，当他倒在冰凉雨水中的时候，他也想起了陈麦冬，腹部的伤口已经痛得麻木，让他感到不安的是随着雨水一起逐渐流失的体温，他想这次可能真的没那么好运活下去了。</p>
+<p>还能见到陈麦冬吗？当时最后和他说的话是什么？因为不知道怎么回答陈麦冬的答案而选择了逃避，会不会让陈麦冬误解，他很敏感……</p>
+<p>周全察觉到自己异样的心理，但他无暇顾及，现在只想快点见到陈麦冬当面解释。</p>
+<p>又在医院住了几天，他实在无法在病床上躺住，在医生给他下了还需要继续留院观察的通牒之后，周全选择不遵医嘱先去找陈麦冬。</p>
+<p>陈麦冬依然没有把他从黑名单里放出来，周全不是个坐以待毙的人，他决定直接驱车到陈麦冬家去抓人。走进小院子里，只看到陈奶奶一个人坐在那品茶。</p>
+<p>“小周，你怎么来啦？”</p>
+<p>“陈奶奶，我是来找小冬的，他在家吗？”</p>
+<p>“他没告诉你吗？他和宋然出去玩了，说让我放心，到时间会回来的，这孩子有自己主见我也就没问。你找他什么事呀？”</p>
+<p>“没什么，我就顺路路过，进来看一下。”</p>
+<p>又和陈奶奶寒暄了几句周全便离开了，和宋然出去玩了……周全在心里仔细回味了一下这句话，总觉得是对自己失约的报复，只是他无可奈何。</p>
+<p>周全没有宋然的联系方式，在手机通讯录里来回滑动了好几次，最终停留在了宋怡的名字上，他有些庆幸当时宋怡和他加过联系方式。</p>
+<p>电话响了几声便被接通，“周警官？”</p>
+<p>“宋怡，抱歉打扰了，我是想问一下你哥哥是和小冬一起出去玩了吗？”</p>
+<p>“我哥？没有啊，他就在家里呆着呢。”周全刚想开口，就听到电话那头传来宋然的声音，“谁啊？”</p>
+<p>宋怡好像是把手机拿远了一些，不过两人对话还是清晰地传到了周全耳朵里。</p>
+<p>等宋怡再次把手机拿近的时候，周全开口问道，“能帮我问问宋然，陈麦冬去哪里了吗？我有急事找他。”</p>
+<p>兄妹俩不知道周全和陈麦冬之间发生了什么，以为真有急事，没怎么犹豫就把陈麦冬去处告诉了周全。</p>
+<p>陈麦冬告诉宋然要自己一个人跑到邻市一个海边度假村旅游，开车过去要好几个小时，等周全到的时候已经天黑。</p>
+<p>他一天没休息，本来就没恢复好，现下脸色更是苍白不少，看起来病怏怏的。他刚把车停完，就在夜色下看到从沙滩走回酒店的陈麦冬，穿着长裤T恤，瞧着竟比之前又瘦了不少。</p>
+<p>他快步跟上，陈麦冬正要进电梯，踏进去的那一刻，从电梯镜子中，陈麦冬看到了跟在自己身后的周全。他刘海有些长，遮到了眼睛，周全只看他脸上露出一瞬间的惊讶便又收敛回去，面无表情转过身刷卡摁楼层。</p>
+<p>电梯里只有他们两个，“小冬……”</p>
+<p>陈麦冬没有理睬，他房间在三层，几乎没有给周全说什么话的机会，电梯叮一声便提醒两人到了。陈麦冬不愿多做停留，头也不回地走出电梯，周全紧紧跟在他身后，急忙开口，“小冬，我不是故意不去……接你的…”</p>
+<p>最后三个字被陈麦冬毫不犹豫地和周全一起关在门外，周全没料到陈麦冬会这么快关门，险些撞在门板上。</p>
+<p>周全一想到不解释清楚，之后可能再无交集便也在乎不上什么脸面了，站在门外不断敲门。陈麦冬从来没想过周全会这样，实在忍受不了反复不断的敲门声，猛然拉开门，“周全，你每次都这样，给颗甜枣然后再给一巴掌让我清醒。那天问题的答案其实我也明白你的意思，本来我也没抱什么希望。”</p>
+<p>“小冬，我很抱歉没有告诉你我去执行任务，这是我的错我没法狡辩。但关于那件事……你能再给我一些时间吗？至于高考完没有去接你，这个我可以解释……我……”</p>
+<p>“周全，不用说了，你也早点回去吧。”陈麦冬将门轻轻关上，不想再管周全说什么。其实他没什么开不开心，已经被丢下习惯了，也许一开始还会情绪上头感到气愤，但一次两次三次，慢慢也就平静了，他总是在奢望在渴求一些不属于自己的东西，到头来也不过是更加失望罢了。</p>
+<p>周全敲门的声音逐渐，陈麦冬想他可能一会儿就会走了，独自在房间里收拾一下东西，准备将垃圾放在门外等保洁来收。</p>
+<p>门一开他余光便感觉到门边坐着人，周全蜷坐在地板上，脸色看起来很不好，额角挂着细密汗珠。他刚要去叫周全，就看到周全白色衬衣晕出一片红色血迹。</p>
+<p>“周全！”</p>
+<p>06</p>
+<p>高考结束后的度假被迫提前结束，那天夜里陈麦冬叫了救护车把周全送进医院。途中周全的手机一直在响，陈麦冬只得接起，他本意是告知对方周全情况，结果一接起劈头盖脸就被骂了一顿。</p>
+<p>“周全！你这臭小子是不是不要命了？医生千叮咛万嘱咐和你说不能出院，还要留院观察，你他妈又瞎跑去哪里了？！”</p>
+<p>打电话来的是周全领导，此刻正站在病房里对着清醒过来的周全骂骂咧咧，陈麦冬坐在门外走廊的椅子上，低垂着头，盯着自己手指上一小块血迹发呆。</p>
+<p>周全这次任务回来像是变了个人，从病房出来就赖着陈麦冬不放，“小冬，你能送我回家吗，我手臂现在使不上力……”</p>
+<p>“小冬，医生刚说我需要好好休息，饮食也得好好规划，你知道的，我一直点外卖，我……”</p>
+<p>“小冬……”</p>
+<p>“小冬……”</p>
+<p>“闭嘴，周全，再叫我就走了。”短短从病房到医院门口的路，周全的嘴像坏了门把一样一路念叨，陈麦冬提着一袋子药站在路口准备叫出租车。</p>
+<p>直到一起坐上车，周全才闭上嘴。距离周全家不近，路程要半个小时，周全本来就是病人有些虚弱，刚看着还很有精神在车上坐了一会儿便坚持不住开始眼皮打架脑袋左点右点，最后也不知是有意还是无意，精准地靠在了陈麦冬肩膀上。</p>
+<p>陈麦冬看不懂周全，不知道他心里怎么想，也有些疲于去猜测，但如果周全还要一些时间才能给自己答案……陈麦冬忽然想到以前宋然调侃他，“我们冬哥啊就是一个面冷心软的人，看起来是个酷哥，其实心特别软，很容易就原谅别人了。”</p>
+<p>司机一脚刹车停在周全家楼下，拉回了陈麦冬飘远的思绪，弄醒了睡着的周全。周全迷迷蒙蒙地睁开眼睛，眼睛一时没有焦点，他拉住陈麦冬的手臂，迷糊着问，“小冬，到了吗？”</p>
+<p>“嗯到了，下车吧。”</p>
+<p>周全家和自己离开前没什么两样，桌子上甚至积起了一层薄薄的灰，周全推着陈麦冬往沙发上一坐，自己也跟着坐下，手抓着陈麦冬的胳膊，手在陈麦冬大腿上拍了两下，“我们先休息，休息……实在是太累了……”</p>
+<p>也不知道周全到底有多累，就这么拉着陈麦冬靠在沙发上又睡着了。</p>
+<p>额前的碎发垂落，阳光下周全脸上一层细小绒毛，只是脸上的肉都要瘦没了，陈麦冬不禁伸出手去触碰，第一次完完全全的将手指贴在周全脸上，他轻轻摸了一下便收回手，转头嘟囔着，“周全…最后一次机会。”</p>
+<p>他没看到身后靠在沙发上的周全悄悄露出笑容。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/04/29/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="reader-actions" aria-label="文章导航">
+    <a class="reader-link" href="/categories/%E7%9F%AD%E7%AF%87/">返回短篇</a>
+    <a class="reader-link" href="/map/">返回频道地图</a>
+  </nav>
+</main>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MOONCALLER77</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

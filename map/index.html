@@ -1,18 +1,496 @@
-<body class="map">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<style>
+/* =========================
+   🚨 全局清理与统一风格
+   ========================= */
+/* 1. 强制隐藏主题默认的头部、导航和页脚 */
+.header,
+.site-nav,
+.site-header,
+.navbar,
+.menu,
+.site-brand-container {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
 
-<section class="map-page">
+/* 2. 全局背景和基础字体 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #050d18, #0b1a2a, #2775b6) fixed;
+  color: #9fbcd3;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
 
-  <h1>WORLD MAP</h1>
+/* 3. 统一分类页和文章页的列表样式（去除默认卡片感） */
+.posts-collapse,
+.post-block {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 
-  <div class="grid">
+.post-title a {
+  color: #87CEEB !important;
+}
+.post-title a:hover {
+  color: #ffffff !important;
+}
 
-    <a href="/categories/短篇/">短篇</a>
-    <a href="/categories/长篇/">长篇</a>
-    <a href="/categories/片段/">片段</a>
-    <a href="/categories/同人图/">图像</a>
+/* 4. 文章正文排版（首行缩进） */
+.post-body p {
+  text-indent: 2em;
+  line-height: 1.8;
+  margin-bottom: 0.8em;
+}
 
+/* 5. 隐藏可能出现的侧边栏 */
+.sidebar {
+  display: none !important;
+}
+/* =========================
+   分类页/文章列表统一美化
+   ========================= */
+.category-all-page,
+.posts-collapse {
+  max-width: 700px;
+  margin: 0 auto !important;
+  float: none !important;
+  background: transparent !important;
+}
+
+.category-list-title,
+.category-all-title {
+  text-align: center;
+  font-size: 24px;
+  color: #87CEEB !important;
+  margin: 60px 0 40px;
+}
+
+.category-list,
+.category-all-page ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list-item,
+.category-all-page li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(135,206,235,0.08);
+}
+
+.category-list-link,
+.category-all-page a {
+  color: #87CEEB !important;
+  text-decoration: none !important;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.category-list-link:hover,
+.category-all-page a:hover {
+  color: #ffffff !important;
+}
+
+.category-list-count {
+  color: rgba(135,206,235,0.4);
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer {
+  display: none !important;
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mooncaller77.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="频道地图">
+<meta property="og:url" content="https://mooncaller77.github.io/map/index.html">
+<meta property="og:site_name" content="FM214831">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-03T03:40:46.585Z">
+<meta property="article:modified_time" content="2026-05-03T03:40:46.585Z">
+<meta property="article:author" content="MOONCALLER77">
+<meta property="article:tag" content="同人,小说,海边月亮,全糖可乐">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mooncaller77.github.io/map/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"https://mooncaller77.github.io/map/index.html","path":"map/index.html","title":"频道地图"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>频道地图 | FM214831</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
   </div>
 
-</section>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">FM214831</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">微弱信号，不定期广播。<br>内容包含：海边月亮、全糖可乐、以及一些真挚的关系。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-短篇"><a href="/categories/%E7%9F%AD%E7%AF%87/" rel="section"><i class="fa fa-feather-alt fa-fw"></i>短篇</a></li><li class="menu-item menu-item-长篇"><a href="/categories/%E9%95%BF%E7%AF%87/" rel="section"><i class="fa fa-book fa-fw"></i>长篇</a></li><li class="menu-item menu-item-同人图"><a href="/categories/%E5%90%8C%E4%BA%BA%E5%9B%BE/" rel="section"><i class="fa fa-image fa-fw"></i>同人图</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+    </div>
+
+    <div class="main-inner ">
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at 50% 24%, rgba(135,206,235,0.18), transparent 24rem), linear-gradient(to bottom, #050d18, #0b1a2a 52%, #2775b6) fixed;
+  color: #b7d4e8;
+  font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+.header, .site-nav, .site-brand-container, .site-header,
+.footer, .site-footer, .sidebar {
+  display: none !important;
+}
+
+a, a:hover, a:focus, a:visited,
+.card, .card:hover, .card:focus, .card:visited,
+.card *, .map-link, .map-link:hover, .map-link:focus, .map-link:visited,
+.home-link, .home-link:hover, .home-link:focus, .home-link:visited,
+.post-item, .post-item:hover, .post-item:focus, .post-item:visited,
+.post-item *, .post-item *:hover, .post-item *:focus, .post-item *:visited {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+.signal-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 18px;
+  transform-origin: center;
+}
+
+.fm-mini {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: 'Sniglet', "PingFang SC", sans-serif;
+  color: #a6e3ff;
+  text-shadow: 0 0 10px rgba(135,206,235,0.5), 0 0 22px rgba(39,117,182,0.3);
+}
+
+.digital-mini {
+  display: flex;
+  gap: 5px;
+}
+
+.seg-char {
+  position: relative;
+  width: 18px;
+  height: 32px;
+}
+
+.seg {
+  position: absolute;
+  background: rgba(120,200,255,0.08);
+}
+
+.seg.on {
+  background: #87ceeb;
+  box-shadow: 0 0 7px rgba(135,206,235,0.85);
+}
+
+.seg.a { top: 0; left: 4px; width: 10px; height: 2px; }
+.seg.b { top: 3px; right: 0; width: 2px; height: 11px; }
+.seg.c { bottom: 3px; right: 0; width: 2px; height: 11px; }
+.seg.d { bottom: 0; left: 4px; width: 10px; height: 2px; }
+.seg.e { bottom: 3px; left: 0; width: 2px; height: 11px; }
+.seg.f { top: 3px; left: 0; width: 2px; height: 11px; }
+.seg.g { top: 15px; left: 4px; width: 10px; height: 2px; }
+
+.page-shell {
+  min-height: 100vh;
+  width: min(820px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 68px 0 56px;
+  box-sizing: border-box;
+}
+
+.page-heading {
+  text-align: center;
+  margin: 0 0 34px;
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #d7f4ff;
+  text-shadow: 0 0 14px rgba(135,206,235,0.38);
+}
+
+.page-heading p {
+  margin: 10px 0 0;
+  font-size: 22px;
+  font-family: 'Long Cang', 'ZCOOL XiaoWei', cursive !important;
+  color: rgba(206,234,246,0.84);
+  letter-spacing: 1px;
+}
+
+.soft-panel {
+  position: relative;
+  border: 1px solid rgba(135,206,235,0.18);
+  background: rgba(5,13,24,0.18);
+  backdrop-filter: blur(6px);
+}
+
+.soft-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 32%, rgba(135,206,235,0.08));
+  opacity: 0.72;
+}
+
+@media (max-width: 640px) {
+  .page-shell { width: min(100% - 28px, 820px); padding-top: 44px; }
+  .signal-mark { transform: scale(0.9); }
+  .page-heading h1 { font-size: 28px; }
+  .page-heading p { font-size: 20px; }
+}
+
+
+.map-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chapter-map {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  position: relative;
+  display: block;
+  min-height: 112px;
+  padding: 22px 22px 20px;
+  overflow: hidden;
+  border-radius: 8px;
+  color: #87ceeb;
+  transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+}
+
+.card:hover,
+.card:focus {
+  transform: translateY(-3px);
+  border-color: rgba(135,206,235,0.48);
+  background: rgba(19,57,88,0.32);
+  outline: none;
+}
+
+.card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #f4fbff;
+}
+
+.card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(190,222,238,0.72);
+}
+
+.home-link,
+.map-link {
+  display: block;
+  width: fit-content;
+  margin: 32px auto 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: rgba(198,232,246,0.78);
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  background: rgba(5,13,24,0.18);
+  transition: color 0.22s ease, background 0.22s ease;
+}
+
+.home-link:hover,
+.map-link:hover,
+.home-link:focus,
+.map-link:focus {
+  color: #ffffff;
+  background: rgba(135,206,235,0.12);
+  outline: none;
+}
+
+@media (max-width: 560px) {
+  .chapter-map { grid-template-columns: 1fr; }
+  .card { min-height: 96px; }
+}
+</style>
+
+<main class="page-shell map-page">
+
+  <div class="signal-mark" aria-hidden="true">
+    <div class="fm-mini">FM</div>
+    <div class="digital-mini">
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg d on"></div><div class="seg e on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div><div class="seg f on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg c on"></div><div class="seg d on"></div><div class="seg e on"></div><div class="seg f on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg a on"></div><div class="seg b on"></div><div class="seg c on"></div><div class="seg d on"></div><div class="seg g on"></div></div>
+      <div class="seg-char"><div class="seg b on"></div><div class="seg c on"></div></div>
+    </div>
+  </div>
+  <header class="page-heading">
+    <p>选择一个信号入口</p>
+  </header>
+
+  <nav class="chapter-map" aria-label="内容分类">
+    <a class="card soft-panel" href="/categories/%E7%9F%AD%E7%AF%87/"><h3>短篇</h3><p>偶发事件记录</p></a>
+    <a class="card soft-panel" href="/categories/%E9%95%BF%E7%AF%87.html"><h3>长篇</h3><p>持续发生的关系线</p></a>
+    <a class="card soft-panel" href="/categories/%E7%89%87%E6%AE%B5.html"><h3>片段</h3><p>未完成的信号</p></a>
+    <a class="card soft-panel" href="/categories/%E5%90%8C%E4%BA%BA%E5%9B%BE.html"><h3>图像</h3><p>视觉记忆碎片</p></a>
+  </nav>
+  <a class="home-link" href="/">返回 FM214831</a>
+</main>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MOONCALLER77</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 </body>
+</html>
